@@ -1,20 +1,19 @@
 <template>
   <div id="app">
     <Nav></Nav>
-    <WorkDesk></WorkDesk>
+    <router-view/>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import WorkDesk from "@/views/WorkDesk.vue";
+// import WorkDesk from "@/views/WorkDesk.vue";
 import Nav from "./components/Nav";
 
 export default {
     name: "home",
     components: {
-        Nav,
-        WorkDesk
+      Nav,
     }
 };
 </script>

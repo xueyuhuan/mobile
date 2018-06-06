@@ -11,6 +11,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "css-loader": "^0.28.11",
+    "lib-flexible": "^0.3.2",
     "vue": "^2.5.16",
     "vue-router": "^3.0.1",
     "vuex": "^3.0.1"
@@ -26,6 +27,7 @@
     "babel-jest": "^22.4.3",
     "less": "^3.0.4",
     "less-loader": "^4.1.0",
+    "px2rem-loader": "^0.1.9",
     "vue-template-compiler": "^2.5.16"
   },
   "browserslist": [

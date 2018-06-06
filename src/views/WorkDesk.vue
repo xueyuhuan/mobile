@@ -14,7 +14,7 @@
         <p class="wk_card_head_title">我的服务</p>
         <a href="service_center.html" class="work_more"></a>
       </div>
-      <Application></Application>
+      <Service></Service>
     </div>
     <!--我的日程-->
     <div class="wk_card" v-if="MySchedule">
@@ -27,46 +27,41 @@
         </div>
         <a href="schedule.html" class="work_more"></a>
       </div>
-      <Application></Application>
-      <!--日程内容部分-->
-      <!--<div class="schedule_artical">-->
-        <!--<ul class="sch_ul">-->
-          <!--<li>-->
-            <!--<p class="sch_title">第四批项目验收会议</p>-->
-            <!--<p class="sch_datetime">2017-10-10 11:00</p>-->
-            <!--<p class="sch_detail">田家炳817会议室的详细内容，多余部分会用省略号代替啥恐龙当家爱神的箭卡了as快到了就奥斯卡来得及</p>-->
-          <!--</li>-->
-          <!--<li>-->
-            <!--<p class="sch_title">第四批项目验收会议</p>-->
-            <!--<p class="sch_datetime">2017-10-10 11:00</p>-->
-            <!--<p class="sch_detail">田家炳817会议室的详细内容，多余部分会用省略号代替啥恐龙当家爱神的箭卡了as快到了就奥斯卡来得及</p>-->
-          <!--</li>-->
-          <!--<li>-->
-            <!--<p class="sch_title">第四批项目验收会议</p>-->
-            <!--<p class="sch_datetime">2017-10-10 11:00</p>-->
-            <!--<p class="sch_detail">田家炳817会议室的详细内容，多余部分会用省略号代替啥恐龙当家爱神的箭卡了as快到了就奥斯卡来得及</p>-->
-          <!--</li>-->
-        <!--</ul>-->
-      <!--</div>-->
+      <Schedule></Schedule>
+    </div>
+    <!--校内通知-->
+    <div class="wk_card" v-if="Notice">
+      <div class="wk_card_head">
+        <p class="wk_card_head_title">校内通知</p>
+        <a href="#" class="work_more"></a>
+      </div>
+      <notice></notice>
     </div>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import Application from "@/components/Application.vue";
+import Application from "@/components/workdesk/Application.vue";
+import Service from "@/components/workdesk/Service.vue";
+import Schedule from "@/components/workdesk/Schedule.vue";
+import Notice from "@/components/workdesk/Notice.vue";
 
 export default {
   name: "WorkDesk",
     components: {
-        Application
+        Application,
+        Service,
+        Schedule,
+        Notice
     },
     data: function () {
         return {
             data: '',
             MyApp:false,
             MyService:false,
-            MySchedule:false
+            MySchedule:false,
+            Notice:false
         }
     },
     created:function () {
@@ -78,6 +73,7 @@ export default {
                     if(self.data[i]=="我的应用"){self.MyApp=true}
                     if(self.data[i]=="我的服务"){self.MyService=true}
                     if(self.data[i]=="我的日程"){self.MySchedule=true}
+                    if(self.data[i]=="我的日程"){self.Notice=true}
                 }
                 console.log(response.data);
             })
@@ -150,5 +146,33 @@ export default {
     background-size: 100% 100%;
   }
 
+  .schedule_btn{
+    width: 200px;
+    height: 30px;
+    position: absolute;
+    left: 33%;
+    top: 10px;
+  }
+  .schedule_btn>a:link,.schedule_btn>a:visited,.schedule_btn>a:hover{
+    color: white;
+  }
+
+  .schedule_btn>a:active{
+    color: white;
+  }
+
+  .schedule_btn_a{
+    display: inline-block;
+    padding: 3px 10px;
+    margin-right: 3px;
+    margin-top: 2px;
+    border-radius: 20px;
+    color: rgb(255,255,255);
+    background-color: rgb(191,191,191);
+    font-size: 14px;
+  }
+  .schedule_btn_active{
+    background-color: rgb(240,134,37);
+  }
 
 </style>

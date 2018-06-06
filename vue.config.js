@@ -33,7 +33,9 @@ module.exports = {
     // tweak internal webpack configuration.
     // see https://github.com/vuejs/vue-cli/blob/dev/docs/webpack.md
     chainWebpack: () => {},
-    configureWebpack: () => {},
+    configureWebpack: () => {
+
+    },
 
     // CSS related options
     css: {

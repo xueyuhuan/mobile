@@ -1,10 +1,11 @@
 import axios from 'axios';
+import qs from 'querystring'
 import store from "./store";
 import router from "./router";
-axios.defaults.baseURL = '';
-axios.defaults.headers.common['Authorization'] = "Bearer "+store.state.token;
+axios.defaults.baseURL = 'http://192.168.0.19:8080';
+// axios.defaults.headers.common['Authorization'] = "Bearer "+store.state.token;
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
-//添加请求拦截器
+//请求拦截器
 axios.interceptors.request.use(config => {
   //在发送请求之前做些什么
   // 判断是否存在token，如果存在将每个页面header都添加token
@@ -16,7 +17,7 @@ axios.interceptors.request.use(config => {
   //对请求错误做些什么
   return Promise.reject(error);
 });
-//http response 拦截器
+//响应拦截器
 axios.interceptors.response.use(
     response => {
       return response;
@@ -34,5 +35,33 @@ axios.interceptors.response.use(
       }
       return Promise.reject(error.response.data)
     });
-export default axios;
+export default class Http {
+  static get(url, params) {
+    return new Promise((resolve, reject) => {
+      axios.get(url, {
+        params: params
+      }).then(res => {
+        resolve(res.data)
+      }).catch(err => {
+        reject(err)
+      })
+    })
+  }
+
+  static post(url, params) {
+    return new Promise((resolve, reject) => {
+      axios.post(url, qs.stringify(params), {
+            headers: {
+              'Content-Type': 'application/x-www-form-urlencoded',
+            }
+          }
+      ).then(res => {
+        resolve(res.data)
+      }).catch(err => {
+        reject(err)
+      })
+    })
+  }
+}
+// export default axios;
 

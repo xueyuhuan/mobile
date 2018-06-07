@@ -2,7 +2,8 @@ import Vue from "vue";
 import App from "./App.vue";
 import router from "./router";
 import store from "./store";
-import axios from 'axios'
+import axios from './http'
+import qs from 'qs'
 
 import 'lib-flexible';
 /*引入公共样式*/
@@ -13,7 +14,7 @@ import './assets/css/all.less';
 
 Vue.config.productionTip = false;
 
-Vue.prototype.$ajax=axios;
+Vue.prototype.ajax=axios;
 
 new Vue({
   router,

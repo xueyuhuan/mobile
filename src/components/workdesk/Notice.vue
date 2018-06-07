@@ -1,13 +1,11 @@
 <template>
   <!--校内通知内容部分-->
-  <div class="campus_notice">
-    <ul class="notice_ul">
-      <li v-for="every in data.notice">
-        <p class="notice_title">{{every.title}}</p>
-        <p class="notice_datetime">{{every.time}}</p>
-      </li>
-    </ul>
-  </div>
+  <ul>
+    <li v-for="every in data.notice">
+      <header><h2>{{every.title}}</h2></header>
+      <p>{{every.time}}</p>
+    </li>
+  </ul>
 </template>
 
 <script>
@@ -33,42 +31,46 @@ export default {
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="less">
-  /*
-   * 工作台-小卡片-校内通知部分
-   */
-  ul,li{
-    list-style-type: none;
+  @base:75/2rem;
+  ul{
+    width: 100%;
+    background: #fff;
+  }
+  li{
+    padding: 5/@base 20px;
+    border-bottom: 1px dashed #bfbfbf;
+  }
+  li:last-child{border: none}
+  header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 24/@base;
+    font-size: 14/@base;
+    font-family: "Microsoft YaHei","Source Sans Pro","Helvetica Neue",Helvetica,Arial,sans-serif;
+    color: #000000;
+    margin: 0 0 5/@base;
+  }
+  h2{
+    font-size: 14/@base;
+    font-weight: 500;
     margin: 0;
-    padding: 0;
-  }
-  .campus_notice{
-    width: 100%;
-    background-color: white;
-  }
-  .notice_ul{
-    width: 100%;
-    margin-bottom: 5px;
-  }
-  .notice_ul li{
-    width: 100%;
-    padding: 10px 20px;
-    border-bottom: 1px dashed rgb(191,191,191);
-  }
-  .notice_ul li:last-child {
-    border-bottom: none;
-  }
-  .notice_title{
     white-space: nowrap;
     overflow: hidden;
-    text-overflow:ellipsis;
-    font-size: 14px;
-    color:rgb(0,0,0);
-    font-family: "Microsoft YaHei","Source Sans Pro","Helvetica Neue",Helvetica,Arial,sans-serif;
+    text-overflow: ellipsis;
   }
-  .notice_datetime{
-    margin: 0;
-    font-size: 12px;
+  time{
+    display: block;
+    flex: none;
+  }
+  p{
+    height: 24/@base;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 12/@base;
     color: #959595;
     font-family: "Microsoft YaHei","Source Sans Pro","Helvetica Neue",Helvetica,Arial,sans-serif;
+    margin: 0;
   }
 </style>

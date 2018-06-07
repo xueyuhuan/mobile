@@ -19,5 +19,5 @@ export default {
 </script>
 
 <style lang="less">
-
+  @base: 75/2rem;
 </style>

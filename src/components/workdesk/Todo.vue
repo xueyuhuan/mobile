@@ -1,19 +1,16 @@
 <template>
-  <!--日程内容部分-->
+  <!--我的待办内容部分-->
   <ul>
-    <li v-for="sche in data.schedule">
-      <header>
-        <h2>{{sche.title}}</h2>
-        <time>{{sche.time}}</time>
-      </header>
-      <p>{{sche.detail}}</p>
+    <li v-for="every in data.schedule">
+      <header><h2>{{every.title}}</h2><time>{{every.time}}</time></header>
+      <p>{{every.detail}}</p>
     </li>
   </ul>
 </template>
 
 <script>
 export default {
-  name: "Schedule",
+  name: "Todo",
     data: function () {
         return {
             data: ''
@@ -63,6 +60,7 @@ export default {
     text-overflow: ellipsis;
   }
   time{
+    display: block;
     flex: none;
   }
   p{

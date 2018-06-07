@@ -1,42 +1,62 @@
 <template>
-  <div id="application" class="workDesk_content">
+  <div class="workDesk">
     <!--我的应用-->
-    <div class="wk_card" v-if="MyApp">
-      <div class="wk_card_head">
-        <p class="wk_card_head_title">我的应用</p>
-        <a href="application_center.html" class="work_more"></a>
-      </div>
+    <section v-if="MyApp">
+      <header>
+        <h1>我的应用</h1><a><img src="../assets/images/dot.png"/></a>
+      </header>
       <Application></Application>
-    </div>
+    </section>
     <!--我的服务-->
-    <div class="wk_card" v-if="MyService">
-      <div class="wk_card_head">
-        <p class="wk_card_head_title">我的服务</p>
-        <a href="service_center.html" class="work_more"></a>
-      </div>
+    <section v-if="MyService">
+      <header>
+        <h1>我的服务</h1><a><img src="../assets/images/dot.png"/></a>
+      </header>
       <Service></Service>
-    </div>
+    </section>
     <!--我的日程-->
-    <div class="wk_card" v-if="MySchedule">
-      <div class="wk_card_head">
-        <p class="wk_card_head_title">我的日程</p>
-        <div class="schedule_btn"  >
-          <a  class="schedule_btn_a schedule_btn_active">今天</a>
-          <a  class="schedule_btn_a">明天</a>
-          <a  class="schedule_btn_a">后天</a>
-        </div>
-        <a href="schedule.html" class="work_more"></a>
-      </div>
+    <section class="wk_card" v-if="MySchedule">
+      <header>
+        <h1>我的日程</h1>
+        <div class="btn"><span class="active">今天</span><span>明天</span><span>后天</span></div>
+        <a><img src="../assets/images/dot.png"/></a>
+      </header>
       <Schedule></Schedule>
-    </div>
+    </section>
     <!--校内通知-->
-    <div class="wk_card" v-if="Notice">
-      <div class="wk_card_head">
-        <p class="wk_card_head_title">校内通知</p>
-        <a href="#" class="work_more"></a>
-      </div>
-      <notice></notice>
-    </div>
+    <section v-if="Notice">
+      <header>
+        <h1>校内通知</h1><a><img src="../assets/images/dot.png"/></a>
+      </header>
+      <Notice></Notice>
+    </section>
+    <!--我的待办-->
+    <section v-if="MyTodo">
+      <header>
+        <h1>我的待办</h1><a><img src="../assets/images/dot.png"/></a>
+      </header>
+      <Todo></Todo>
+    </section>
+    <!--学校公文|历史公文-->
+    <section v-if="File">
+      <header>
+        <h1>学校公文<a class="history-file">历史公文</a></h1><a><img src="../assets/images/dot.png"/></a>
+      </header>
+      <File></File>
+    </section>
+    <!--个人中心-->
+    <section v-if="Personal">
+      <header>
+        <h1>个人中心</h1><a><img src="../assets/images/dot.png"/></a>
+      </header>
+      <Personal></Personal>
+    </section>
+    <!--工资查询-->
+    <section v-if="File">
+      <header>
+        <h1>工资查询</h1><a><img src="../assets/images/dot.png"/></a>
+      </header>
+    </section>
   </div>
 </template>
 
@@ -46,22 +66,30 @@ import Application from "@/components/workdesk/Application.vue";
 import Service from "@/components/workdesk/Service.vue";
 import Schedule from "@/components/workdesk/Schedule.vue";
 import Notice from "@/components/workdesk/Notice.vue";
-
+import Todo from "@/components/workdesk/Todo.vue";
+import File from "@/components/workdesk/File.vue";
+import Personal from "@/components/workdesk/Personal.vue";
 export default {
   name: "WorkDesk",
     components: {
-        Application,
-        Service,
-        Schedule,
-        Notice
+      Application,
+      Service,
+      Schedule,
+      Notice,
+      Todo,
+      File,
+      Personal
     },
     data: function () {
         return {
-            data: '',
-            MyApp:false,
-            MyService:false,
-            MySchedule:false,
-            Notice:false
+          data: '',
+          MyApp:false,
+          MyService:false,
+          MySchedule:false,
+          Notice:false,
+          MyTodo:true,
+          File:true,
+          Personal:true
         }
     },
     created:function () {
@@ -84,95 +112,50 @@ export default {
 };
 </script>
 
-<style>
-  .workDesk_content{
-    width: 100%;
+<style scoped lang="less">
+  @base: 75/2rem;
+  .workDesk{
     background-color: rgb(232,232,232);
-    margin-top: 70px;
+    margin-top: 70/@base;
   }
-
-  .wk_card{
-    height: auto;
-    margin-top: 6px;
+  section{
+    margin-top: 6/@base;
     border-top: 2px solid rgb(19,144,211);
   }
-  /*
-   * 卡片头部
-   */
-  .wk_card_head{
-    /*height: 50px;*/
-    padding: 10px 20px;
+  header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #fff;
+    padding: 10/@base 20/@base;
     border-bottom: 1px dashed #bfbfbf;
-    background-color: white;
-    position: relative;
   }
-  /*
-   * 卡片标题
-   */
-  .wk_card_head_title{
-    font-size: 18px;
-    color: rgb(19,144,211);
+  h1{
+    line-height: 30/@base;
+    font-size: 18/@base;
     font-weight: 700;
-    line-height: 29px;
-    margin-bottom: 0;
-    /*position: absolute;
-    left: 6px;
-    top: 10px;
-    margin: 0px;
-    width: 81px;
-    height: 29px;*/
-    /*margin-left: 10px;*/
+    color: rgb(19,144,211);
+    margin: 0;
   }
-
-
-  .wk_card_head_title>a{
-    border-left: 2px solid rgb(19,144,211);
+  span{
     display: inline-block;
-    padding-left: 10px;
-    margin-left:10px ;
-  }
-
-  /*
-   * 右边3个点
-   */
-  .work_more{
-    display: inline-block;
-    width: 30px;
-    height: 30px;
-    position: absolute;
-    top:10px ;
-    right: 20px;
-    background-image:url(../assets/images/dot.png);
-    background-size: 100% 100%;
-  }
-
-  .schedule_btn{
-    width: 200px;
-    height: 30px;
-    position: absolute;
-    left: 33%;
-    top: 10px;
-  }
-  .schedule_btn>a:link,.schedule_btn>a:visited,.schedule_btn>a:hover{
-    color: white;
-  }
-
-  .schedule_btn>a:active{
-    color: white;
-  }
-
-  .schedule_btn_a{
-    display: inline-block;
-    padding: 3px 10px;
-    margin-right: 3px;
-    margin-top: 2px;
-    border-radius: 20px;
-    color: rgb(255,255,255);
     background-color: rgb(191,191,191);
-    font-size: 14px;
+    font-size: 14/@base;
+    color: #fff;
+    padding: 4/@base 10/@base;
+    border-radius: 20/@base;
+    margin: 0 4/@base 0 0 ;
   }
-  .schedule_btn_active{
+  span.active{
     background-color: rgb(240,134,37);
   }
-
+  a img{
+    width: 30/@base;
+  }
+  a.history-file{
+    display: inline-block;
+    border-left: 2px solid rgb(19,144,211);
+    padding-left: 10/@base;
+    margin-left: 10/@base;
+  }
 </style>

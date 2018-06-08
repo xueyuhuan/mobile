@@ -1,6 +1,8 @@
 # test
 npm install
-# vue-cli
+# 使用
+## vue-cli
+此项目使用vue-cli3构建
 npm install -g @vue/cli
 [vue-cli](https://cli.vuejs.org/guide/)
 # vue-router

@@ -2,7 +2,7 @@
 npm install
 
 ## vue-cli
-[vue-cli](https://cli.vuejs.org/guide/)
+[Vue Cli](https://cli.vuejs.org/guide/)
 ## vue-router
 [Vue Router](https://router.vuejs.org/zh/guide/)
 ## axios

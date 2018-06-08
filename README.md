@@ -1,10 +1,10 @@
 # test
 npm install
-# 使用
+# 搭建
 ## vue-cli
-此项目使用vue-cli3构建
-npm install -g @vue/cli
-[vue-cli](https://cli.vuejs.org/guide/)
+使用vue-cli 3<br>
+安装npm install -g @vue/cli<br>
+官方文档 [vue-cli](https://cli.vuejs.org/guide/)
 # vue-router
 [Vue Router](https://router.vuejs.org/zh/guide/)
 # axios

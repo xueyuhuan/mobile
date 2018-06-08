@@ -43,7 +43,7 @@ instance.interceptors.request.use(
       return Promise.reject(error);
     });
 //响应拦截器（返回状态判断）
-axios.interceptors.response.use(
+instance.interceptors.response.use(
     response => {
       return response;
     },
@@ -60,5 +60,5 @@ axios.interceptors.response.use(
       }
       return Promise.reject(error.response.data)
     });
-export default axios;
+export default instance;
 

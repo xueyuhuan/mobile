@@ -52,5 +52,6 @@ export default {
   }
   img{
     width: 24/@base;
+    margin-right: 5/@base;
   }
 </style>

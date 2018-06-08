@@ -19,6 +19,7 @@ export default {
   methods: {
     login: function () {
       let self = this;
+      // this.ajax.get('/login.json',"1");
       this.ajax.post('/security_portal/login', {username: self.name, password: self.password});
     }
   }

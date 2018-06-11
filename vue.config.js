@@ -1,3 +1,13 @@
+const env = process.env.NODE_ENV;
+let target = '';
+if(env==='production'){  // 生产环境
+  target = '';
+}else if(env==='test'){ // 测试环境
+  target = 'http://onetest.ccnu.edu.cn';
+}else{  // 开发环境
+  target = 'http://192.168.0.19:8080';
+}
+
 module.exports = {
     // Project deployment base
     // By default we assume your app will be deployed at the root of a domain,
@@ -64,13 +74,21 @@ module.exports = {
     // configure webpack-dev-server behavior
     devServer: {
         open: process.platform === 'darwin',
-        disableHostCheck: false,
+        disableHostCheck: true,
         host: '0.0.0.0',
-        port: 1234,
+        port: 1235,
         https: false,
         hotOnly: false,
         // See https://github.com/vuejs/vue-cli/blob/dev/docs/cli-service.md#configuring-proxy
-        proxy: null, // string | Object
+        proxy: {
+            '/api':{
+                target:target,
+                changeOrigin:true,
+                pathRewrite:{
+                    '^/api':''
+              }
+            }
+        },
         before: app => {}
     },
 

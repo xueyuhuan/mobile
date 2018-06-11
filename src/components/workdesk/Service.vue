@@ -17,7 +17,7 @@ export default {
     },
     created:function () {
       let self = this;
-      this.$ajax.get('/data1.json')
+      this.$ajax.get('http://localhost:1234/data1.json')
           .then(function (response) {
             self.data=response.data.workDesk;
             console.log(response.data.workDesk);

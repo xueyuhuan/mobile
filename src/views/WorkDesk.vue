@@ -87,26 +87,36 @@ export default {
           MyService:false,
           MySchedule:false,
           Notice:false,
-          MyTodo:true,
-          File:true,
-          Personal:true
+          MyTodo:false,
+          File:false,
+          Personal:false,
+          Pay:false,
+          Rankings:false
         }
     },
     created:function () {
-        let self = this;
-        this.$ajax.get('/data.json')
-            .then(function (response) {
-                self.data=response.data.workDesk;
-                for(let i=0;i<self.data.length;i++){
-                    if(self.data[i]=="我的应用"){self.MyApp=true}
-                    if(self.data[i]=="我的服务"){self.MyService=true}
-                    if(self.data[i]=="我的日程"){self.MySchedule=true}
-                    if(self.data[i]=="我的日程"){self.Notice=true}
+        this.$ajax.post('/api/page_portal/get_user_layout')
+            .then((res)=>{
+              this.data=res.data;
+              console.log(this.data);
+              for(let i=0;i<res.data.widgets.length;i++){
+                console.log(res.data.widgets[i].NAME);
+                switch (res.data.widgets[i].NAME) {
+                  case '个人中心' :this.Personal=true;
+                  case '我的服务' :this.MyService=true;
+                  case '学校公文' :this.File=true;
+                  case '通知公告' :this.Personal=true;
+                  case '我的应用' :this.MyApp=true;
+                  case '校内通知' :this.Notice=true;
+                  case '工资查询' :this.Pay=true;
+                  case '我的日程' :this.MySchedule=true;
+                  case '我的待办' :this.MyTodo=true;
+                  case '服务排行' :this.Rankings=true;
                 }
-                console.log(response.data);
+              }
             })
-            .catch(function (response) {
-                console.log(response);
+            .catch((error)=>{
+                console.log(error);
             });
     }
 };

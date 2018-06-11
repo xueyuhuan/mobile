@@ -13,7 +13,7 @@ const router=new Router({
       path: "/",
       name: "WorkDesk",
       meta:{
-        requireAuth:false,// 添加该字段，表示进入这个路由是需要登录的
+        requireAuth:true,// 添加该字段，表示进入这个路由是需要登录的
       },
       component: WorkDesk
     },
@@ -40,9 +40,11 @@ router.beforeEach((to,from,next) => {
   // next: Function: 一定要调用该方法来 resolve 这个钩子。执行效果依赖 next 方法的调用参数。
   if(to.meta.requireAuth){
     if(store.state.token){
+      console.log("路由守卫中token:"+store.state.token);
       next();
     }
     else {
+      // console.log("路由守卫中fullPath:"+to.fullPath);
       next({
         path:'/login',
         query:{redirect:to.fullPath}

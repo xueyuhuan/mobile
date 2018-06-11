@@ -7,22 +7,23 @@
 </template>
 
 <script>
-
 export default {
   name: "Login",
   data: function () {
     return {
       name: "2006983633",
-      password: "12345678"
+      password: "12345678",
     }
   },
   methods: {
     login: function () {
-      let data = {
-        username: this.name,
-        password: this.password
-      };
-      this.$ajax.post('/security_portal/login',data );
+      let vm=this;
+      this.$ajax.post('/api/security_portal/login',{username: this.name,password: this.password})
+          .then(res => {
+            console.log(res);
+            vm.$store.commit('set_token',res.data.token);
+            vm.$router.push({path: '/'});
+          });
     }
   }
 };

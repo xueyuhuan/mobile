@@ -82,7 +82,6 @@ export default {
     },
     data: function () {
         return {
-          data: '',
           MyApp:false,
           MyService:false,
           MySchedule:false,
@@ -97,8 +96,6 @@ export default {
     created:function () {
         this.$ajax.post('/api/page_portal/get_user_layout')
             .then((res)=>{
-              this.data=res.data;
-              console.log(this.data);
               for(let i=0;i<res.data.widgets.length;i++){
                 console.log(res.data.widgets[i].NAME);
                 switch (res.data.widgets[i].NAME) {

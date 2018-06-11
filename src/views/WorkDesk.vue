@@ -80,6 +80,7 @@ export default {
       File,
       Personal
     },
+
     data: function () {
         return {
           MyApp:false,

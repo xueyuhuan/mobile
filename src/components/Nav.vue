@@ -8,11 +8,7 @@
       </div>
     </div>
     <ul v-show="isShow">
-      <li><router-link to="/"><span class="active">工作台</span></router-link></li>
-      <li><router-link to="service_center.html"><span>服务</span></router-link></li>
-      <li><router-link to="news_center.html"><span>资讯</span></router-link></li>
-      <li><router-link to="application_center.html"><span>应用</span></router-link></li>
-      <li><router-link to="schedule.html"><span>日程</span></router-link></li>
+      <li v-for="(item,index) in array" @click="toggle(index)"><router-link :to="item.url"><span :class="{active:index===active}">{{item.name}}</span></router-link></li>
     </ul>
   </nav>
 </template>
@@ -22,9 +18,23 @@ export default {
   name: "Nav",
   data: function () {
     return {
+      array:[
+        {name:'工作台',url:'/'},
+        {name:'服务',url:'/service'},
+        {name:'咨询',url:'/'},
+        {name:'应用',url:'/'},
+        {name:'日程',url:'/'},
+      ],
+      active:0,
       isShow:false,
     }
   },
+  methods:{
+    toggle(index){
+      this.active=index;
+      this.isShow=false;
+    }
+  }
 };
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->

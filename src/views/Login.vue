@@ -7,6 +7,7 @@
 </template>
 
 <script>
+  import api from "@/interface.js";
 export default {
   name: "Login",
   data: function () {
@@ -17,7 +18,8 @@ export default {
   },
   methods: {
     login: function () {
-      this.$ajax.post('/api/security_portal/login',{username: this.name,password: this.password})
+      console.log(api.login);
+      this.$ajax.post(api.login,{username: this.name,password: this.password})
           .then(res => {
             this.$store.commit('set_token',res.data.token);//在store.js中设置token
             this.$router.push({path: '/'});

@@ -46,12 +46,13 @@ instance.interceptors.request.use(
     });
 //响应拦截器（返回状态判断）
 instance.interceptors.response.use(
-    response => {
-      return response;
+    res => {
+      console.log(res);
+        return res;
     },
-    error => {
-      if (error.response) {
-        switch (error.response.status) {
+    err => {
+      if (err.response) {
+        switch (err.response.status) {
           case 403:
             // this.$store.commit('del_token');
             router.replace({
@@ -60,7 +61,7 @@ instance.interceptors.response.use(
             })
         }
       }
-      return Promise.reject(error)
+      return Promise.reject(err)
     });
 export default instance;
 

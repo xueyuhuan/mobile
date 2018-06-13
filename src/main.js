@@ -6,6 +6,7 @@ import router from "./router";
 import store from "./store";
 import axios from './axios'
 
+
 import 'lib-flexible';
 /*引入公共样式*/
 // import './assets/css/ccnu_index.css';
@@ -16,7 +17,6 @@ import './assets/css/all.less';
 Vue.config.productionTip = false;
 Vue.use(ElementUI);
 Vue.prototype.$ajax=axios;
-
 new Vue({
   router,
   store,

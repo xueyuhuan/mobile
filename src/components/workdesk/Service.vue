@@ -1,30 +1,32 @@
 <template>
   <div class="service">
-    <a v-for="app in data.application" :href="app.appUrl">
-      <img :src="app.appImgSrc"/>
-      {{app.appName}}
+    <a v-for="item in service_list" :href="item.url">
+      <img :src="'/resource/service?id=' + item.id"/>
+      {{item.name}}
     </a>
   </div>
 </template>
 
 <script>
+  import api from "@/interface.js";
 export default {
+
   name: "Service",
     data: function () {
         return {
-            data: ''
+            service_list: ''
         }
     },
     created:function () {
-      let self = this;
-      this.$ajax.get('http://localhost:1234/data1.json')
-          .then(function (response) {
-            self.data=response.data.workDesk;
-            console.log(response.data.workDesk);
-          })
-          .catch(function (response) {
-            console.log(response);
-          });
+      this.$ajax.post(api.service_list)
+              .then(res => {
+                console.log(res);
+                this.service_list = res.data.services
+              })
+              .catch(err => {
+                console.log(err);
+              })
+
     }
 };
 </script>

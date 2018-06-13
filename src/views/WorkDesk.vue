@@ -52,10 +52,11 @@
       <Personal></Personal>
     </section>
     <!--工资查询-->
-    <section v-if="File">
+    <section v-if="Pay">
       <header>
         <h1>工资查询</h1><a><img src="../assets/images/dot.png"/></a>
       </header>
+      <Pay></Pay>
     </section>
   </div>
 </template>
@@ -69,6 +70,7 @@ import Notice from "@/components/workdesk/Notice.vue";
 import Todo from "@/components/workdesk/Todo.vue";
 import File from "@/components/workdesk/File.vue";
 import Personal from "@/components/workdesk/Personal.vue";
+import Pay from "@/components/workdesk/Pay.vue";
 export default {
   name: "WorkDesk",
     components: {
@@ -78,12 +80,13 @@ export default {
       Notice,
       Todo,
       File,
-      Personal
+      Personal,
+      Pay
     },
 
     data: function () {
         return {
-          MyApp:false,
+          MyApp:true,
           MyService:false,
           MySchedule:false,
           Notice:false,

@@ -4,31 +4,36 @@
       <!--<img src="../assets/images/temp.png"/>-->
       <!--一张表流程平台奥斯卡级到哈市开掘到-->
     <!--</a>-->
-    <a v-for="app in data.application" :href="app.appUrl">
-      <img :src="app.appImgSrc"/>
-      {{app.appName}}
+    <a v-for="app in appList" :href="app.url">
+      <img :src="'/resource/app?id=' + app.id"/>
+      {{app.name}}
     </a>
   </div>
 </template>
 
 <script>
+    import api from "@/interface.js";
 export default {
   name: "Application",
-    data: function () {
+    data () {
         return {
-            data: ''
+            appList: []
         }
     },
-    created:function () {
-        let self = this;
-        this.$ajax.get('/data1.json')
-            .then(function (response) {
-                self.data=response.data.workDesk;
-                console.log(response.data.workDesk);
-            })
-            .catch(function (response) {
-                console.log(response);
-            });
+    created () {
+        this.$ajax.post(api.app_list)
+                .then(res => {
+                    console.log(res.data.apps);
+                    if(res.data.errcode = '0'){
+                        this.appList = res.data.apps;
+                        console.log(this.appList);
+                    }else {
+                        console.log(res.data.errmsg);
+                    }
+                })
+                .catch(err => {
+                    console.log(err);
+                });
     }
 };
 </script>

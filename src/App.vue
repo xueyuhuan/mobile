@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" v-cloak>
     <Nav></Nav>
     <router-view/>
   </div>
@@ -20,4 +20,7 @@ export default {
 
 <style lang="less">
   @base: 75/2rem;
+  [v-cloak] {
+    display: none;
+  }
 </style>

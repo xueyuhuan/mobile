@@ -22,7 +22,7 @@ export default {
         {name:'工作台',url:'/'},
         {name:'服务',url:'/service'},
         {name:'咨询',url:'/'},
-        {name:'应用',url:'/'},
+        {name:'应用',url:'/app'},
         {name:'日程',url:'/'},
       ],
       active:0,

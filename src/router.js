@@ -4,6 +4,7 @@ import store from "./store";
 
 import WorkDesk from "./views/WorkDesk.vue";
 import ServiceCenter from "./views/ServiceCenter";
+import AppCenter from "./views/AppCenter";
 import Login from "./views/Login.vue";
 import Home from "./views/Home.vue";
 Vue.use(Router);
@@ -25,6 +26,14 @@ const router=new Router({
         requireAuth:false,// 添加该字段，表示进入这个路由是需要登录的
       },
       component: ServiceCenter
+    },
+    {
+      path: "/app",
+      name: "AppCenter",
+      meta:{
+        requireAuth:false,// 添加该字段，表示进入这个路由是需要登录的
+      },
+      component: AppCenter
     },
     {
       path:"/login",

@@ -21,9 +21,9 @@ export default {
       array:[
         {name:'工作台',url:'/'},
         {name:'服务',url:'/service'},
-        {name:'咨询',url:'/'},
+        // {name:'咨询',url:'/'},
         {name:'应用',url:'/app'},
-        {name:'日程',url:'/'},
+        {name:'日程',url:'/schedule'},
       ],
       active:0,
       isShow:false,

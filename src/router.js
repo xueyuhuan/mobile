@@ -5,15 +5,15 @@ import store from "./store";
 import WorkDesk from "./views/WorkDesk.vue";
 import ServiceCenter from "./views/ServiceCenter";
 import AppCenter from "./views/AppCenter";
+import ScheduleCenter from "./views/ScheduleCenter"
 import Login from "./views/Login.vue";
-import Home from "./views/Home.vue";
 Vue.use(Router);
 
 const router=new Router({
   routes: [
     {
       path: "/",
-      name: "WorkDesk",
+      name: "WorkDesk",//工作台
       meta:{
         requireAuth:true,// 添加该字段，表示进入这个路由是需要登录的
       },
@@ -21,7 +21,7 @@ const router=new Router({
     },
     {
       path: "/service",
-      name: "ServiceCenter",
+      name: "ServiceCenter",//服务
       meta:{
         requireAuth:false,// 添加该字段，表示进入这个路由是需要登录的
       },
@@ -29,21 +29,24 @@ const router=new Router({
     },
     {
       path: "/app",
-      name: "AppCenter",
+      name: "AppCenter",//应用
       meta:{
         requireAuth:false,// 添加该字段，表示进入这个路由是需要登录的
       },
       component: AppCenter
     },
     {
+      path: "/schedule",
+      name: "ScheduleCenter",//应用
+      meta:{
+        requireAuth:false,// 添加该字段，表示进入这个路由是需要登录的
+      },
+      component: ScheduleCenter
+    },
+    {
       path:"/login",
       name:"login",
       component: Login
-    },
-    {
-      path:"/home",
-      name:"home",
-      component: Home
     },
     {
       path: '**',   // 错误路由
@@ -62,7 +65,6 @@ router.beforeEach((to,from,next) => {
       next();
     }
     else {
-      // console.log("路由守卫中fullPath:"+to.fullPath);
       next({
         path:'/login',
         query:{redirect:to.fullPath}

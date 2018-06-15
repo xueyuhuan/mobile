@@ -17,7 +17,7 @@ import './assets/css/all.less';
 
 Vue.config.productionTip = false;
 Vue.use(ElementUI);
-Vue.use(vueEventCalendar, {locale: 'zh'}); //可以设置语言，支持中文和英文
+
 Vue.prototype.$ajax=axios;
 new Vue({
   router,

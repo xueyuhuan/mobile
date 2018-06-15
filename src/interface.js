@@ -1,9 +1,8 @@
-/**
- * Created by sibe2 on 2018/6/11.
- */
+let api='/api';
 export default{
     //首页工作台
-    login:"/api/security_portal/login",//登陆
+  login:"/api/security_portal/login",//登陆
+  WorkDesk:api+'/page_portal/get_user_layout',//工作台
     get_user_layout:"/api/page_portal/get_user_layout",//用户配置
     pay:"/api/user_portal/salary",//我的工资
     app_list:"/api/app_portal/list_for_widget",//我的应用列表

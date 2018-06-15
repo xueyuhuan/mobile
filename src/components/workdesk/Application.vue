@@ -1,9 +1,5 @@
 <template>
   <div class="application">
-    <!--<a href="#">-->
-      <!--<img src="../assets/images/temp.png"/>-->
-      <!--一张表流程平台奥斯卡级到哈市开掘到-->
-    <!--</a>-->
     <a v-for="app in appList" :href="app.url">
       <img :src="'/api/resource/app?id=' + app.id"/>
       {{app.name}}
@@ -12,7 +8,7 @@
 </template>
 
 <script>
-    import api from "@/interface.js";
+
 export default {
   name: "Application",
     data () {
@@ -21,7 +17,7 @@ export default {
         }
     },
     created () {
-        this.$ajax.post(api.app_list)
+        this.$ajax.post(this.$url.componentHomeApp)
                 .then(res => {
                     console.log(res.data.apps);
                     if(res.data.errcode = '0'){

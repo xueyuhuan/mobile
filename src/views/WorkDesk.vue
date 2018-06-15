@@ -71,6 +71,7 @@ import Todo from "@/components/workdesk/Todo.vue";
 import File from "@/components/workdesk/File.vue";
 import Personal from "@/components/workdesk/Personal.vue";
 import Pay from "@/components/workdesk/Pay.vue";
+
 export default {
   name: "WorkDesk",
     components: {
@@ -83,7 +84,6 @@ export default {
       Personal,
       Pay
     },
-
     data: function () {
         return {
           MyApp:true,
@@ -98,7 +98,7 @@ export default {
         }
     },
     created:function () {
-        this.$ajax.post('/api/page_portal/get_user_layout')
+        this.$ajax.post(this.$url.viewHome)
             .then((res)=>{
               for(let i=0;i<res.data.widgets.length;i++){
                 console.log(res.data.widgets[i].NAME);

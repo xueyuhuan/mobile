@@ -28,7 +28,7 @@ module.exports = {
     // whether to use eslint-loader for lint on save.
     // valid values: true | false | 'error'
     // when set to 'error', lint errors will cause compilation to fail.
-    lintOnSave: true,
+    lintOnSave: false,
 
     // use the full build with in-browser compiler?
     // https://vuejs.org/v2/guide/installation.html#Runtime-Compiler-vs-Runtime-only

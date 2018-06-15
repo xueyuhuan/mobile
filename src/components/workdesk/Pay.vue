@@ -2,14 +2,14 @@
 <template>
     <div class="schedule_artical">
         <div class="salary_title">
-            <p class="salary_title_p">2017年12月工资</p>
+            <p class="salary_title_p">{{title}}</p>
             <p class="salary_title_p">
-                <span>应发合计：5637.31</span>
-                <span>扣款合计：2463.8</span>
+                <span>应发合计：{{salary.YFHJ}}</span>
+                <span>扣款合计：{{salary.KKHJ}}</span>
             </p>
             <p class="salary_title_p">
-                <span>实发合计：3173.51</span>
-                <span>上月津贴：3910</span>
+                <span>实发合计：{{salary.SFGZ}}</span>
+                <span>上月津贴：{{salary.XNJT}}</span>
             </p>
         </div>
         <div id="salary_div">
@@ -25,7 +25,8 @@ import api from "@/interface.js";
     export default {
         data(){
             return{
-
+                salary:{},
+                title:""
             }
         },
         created(){
@@ -33,14 +34,17 @@ import api from "@/interface.js";
             console.log(api.pay);
             this.$ajax.post(api.pay)
                     .then((res)=>{
-                        console.log(res);
+                        console.log(res.data);
+                        this.salary = res.data.salary;
+                        this.title = res.data.title;
+                        this.drawSalary();//画canvas图表
                     })
                     .catch((err)=>{
                         console.log(err);
                     });
         },
         mounted(){
-            this.drawSalary();//画canvas图表
+
         },
         methods: {
             getPay(){
@@ -55,6 +59,7 @@ import api from "@/interface.js";
                         });
             },
             drawSalary(){
+                var self = this;
                 var chart_salary = echarts.init(document.getElementById('salary_div'));
                 chart_salary.setOption({
 //					title:{
@@ -72,19 +77,19 @@ import api from "@/interface.js";
                         orient: 'horizontal',
                         bottom: 10,
                         data: [{
-                            value: 1710,
+                            value: self.salary.GWGZ,
                             name: '岗位工资'
                         },
                             {
-                                value: 1099,
+                                value: self.salary.XJGZ,
                                 name: '薪级工资'
                             },
                             {
-                                value: 2626,
+                                value: self.salary.JXGZ,
                                 name: '绩效'
                             },
                             {
-                                value: 1000,
+                                value: self.salary.BFHJ ,
                                 name: '补发'
                             },
                         ]
@@ -108,19 +113,19 @@ import api from "@/interface.js";
                             }
                         },
                         data: [{
-                            value: 1710,
+                            value: self.salary.GWGZ,
                             name: '岗位工资'
                         },
                             {
-                                value: 1099,
+                                value: self.salary.XJGZ,
                                 name: '薪级工资'
                             },
                             {
-                                value: 2626,
+                                value: self.salary.JXGZ,
                                 name: '绩效'
                             },
                             {
-                                value: 1000,
+                                value: self.salary.BFHJ ,
                                 name: '补发'
                             },
                         ]

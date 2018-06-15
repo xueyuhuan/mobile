@@ -1,7 +1,7 @@
 <template>
   <div class="service">
     <a v-for="item in service_list" :href="item.url">
-      <img :src="'/resource/service?id=' + item.id"/>
+      <img :src="'/api/resource/service?id=' + item.id"/>
       {{item.name}}
     </a>
   </div>
@@ -41,8 +41,8 @@ export default {
     padding:10/@base 20/@base 0;
   }
   a{
-    display: flex;
-    align-items: center;
+    display: inline-block;
+    /*align-items: center;*/
     width: 50%;
     font-size: 14/@base;
     font-family: "Microsoft YaHei","Source Sans Pro","Helvetica Neue",Helvetica,Arial,sans-serif;
@@ -55,5 +55,6 @@ export default {
   img{
     width: 24/@base;
     margin-right: 5/@base;
+    vertical-align: middle;
   }
 </style>

@@ -11,7 +11,8 @@ export default{
     schedule_list:"/api/calendar_portal/get_events_widget",//日程列表
     notice_list:"/api/notice_portal/noticeList",//校内通知
     gongwenList:"/api/gongwen_portal/gongwenList",//学校公文
-    daibanList:"/api/task_portal/query_todo_all"//待办
+    daibanList:"/api/task_portal/query_todo_all",//待办
+    user_center:"/api/user_portal/user_center_modules"//个人中心
 }
 
 

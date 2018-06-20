@@ -11,7 +11,6 @@
 </template>
 
 <script>
-    import api from "@/interface.js";
     export default {
         name: "Todo",
         data () {
@@ -20,7 +19,7 @@
             }
         },
         created () {
-            this.$ajax.post(api.daibanList)
+            this.$ajax.post(this.$url.componentHomeTodo)
                     .then(res => {
                 console.log(res.data);
 //            this.service_list = res.data.services

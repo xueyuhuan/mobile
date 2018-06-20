@@ -26,7 +26,6 @@
 </template>
 
 <script>
-    import api from "@/interface.js";
     export default {
         name: "Personal",
         data () {
@@ -35,7 +34,7 @@
             }
         },
         created () {
-            this.$ajax.post(api.user_center)
+            this.$ajax.post(this.$url.componentHomeUser)
                     .then(res => {
                 console.log(res);
 

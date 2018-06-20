@@ -8,9 +8,7 @@
 </template>
 
 <script>
-  import api from "@/interface.js";
 export default {
-
   name: "Service",
     data: function () {
         return {
@@ -18,7 +16,7 @@ export default {
         }
     },
     created:function () {
-      this.$ajax.post(api.service_list)
+      this.$ajax.post(this.$url.componentHomeService)
               .then(res => {
                 console.log(res);
                 this.service_list = res.data.services
@@ -26,7 +24,6 @@ export default {
               .catch(err => {
                 console.log(err);
               })
-
     }
 };
 </script>

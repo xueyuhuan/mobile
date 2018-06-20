@@ -18,10 +18,12 @@
     <section class="wk_card" v-if="MySchedule">
       <header>
         <h1>我的日程</h1>
-        <div class="btn"><span class="active">今天</span><span>明天</span><span>后天</span></div>
+        <div class="btn">
+          <span v-for="(item,index) in sch_date" @click="toggle_sch_date(index)" :class="{ active : index == sch_date_index }">{{item}}</span>
+        </div>
         <a><img src="../assets/images/dot.png"/></a>
       </header>
-      <Schedule></Schedule>
+      <Schedule ref="Schedule" :sch_date_index="sch_date_index"></Schedule>
     </section>
     <!--校内通知-->
     <section v-if="Notice">
@@ -61,7 +63,7 @@
   </div>
 </template>
 
-<script>
+<script >
 // @ is an alias to /src
 import Application from "@/components/workdesk/Application.vue";
 import Service from "@/components/workdesk/Service.vue";
@@ -94,7 +96,9 @@ export default {
           File:false,
           Personal:false,
           Pay:false,
-          Rankings:false
+          Rankings:false,
+          sch_date:['今天','明天','后天'],
+          sch_date_index:0
         }
     },
     created:function () {
@@ -119,7 +123,16 @@ export default {
             .catch((error)=>{
                 console.log(error);
             });
+    },
+  methods:{
+    toggle_sch_date(index){
+      console.log(index);
+      this.sch_date_index = index;
+//      console.log(this.sch_date_index);
+      console.log(this);
+      this.$refs.Schedule.getData(index);
     }
+  }
 };
 </script>
 

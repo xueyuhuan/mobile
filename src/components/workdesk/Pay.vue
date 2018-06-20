@@ -21,7 +21,6 @@
 <script type="text/ecmascript-6">
 //    var echarts = require('echarts');
 import echarts from "echarts";
-import api from "@/interface.js";
     export default {
         data(){
             return{
@@ -31,8 +30,8 @@ import api from "@/interface.js";
         },
         created(){
 //            this.getPay();//拿数据
-            console.log(api.pay);
-            this.$ajax.post(api.pay)
+            console.log(this.$url.componentHomePay);
+            this.$ajax.post(this.$url.componentHomePay)
                     .then((res)=>{
                         console.log(res.data);
                         this.salary = res.data.salary;
@@ -49,8 +48,7 @@ import api from "@/interface.js";
         methods: {
             getPay(){
                 let self = this;
-                console.log("/api/user_portal/salary");
-                this.$ajax.post(api.pay)
+                this.$ajax.post(this.$url.componentHomePay)
                         .then((res)=>{
                             console.log(res);
                         })

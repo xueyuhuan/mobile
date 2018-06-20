@@ -11,7 +11,6 @@
 </template>
 
 <script>
-    import api from "@/interface.js";
     export default {
         name: "File",
         data: function () {
@@ -20,7 +19,7 @@
             }
         },
         created: function () {
-            this.$ajax.post(api.gongwenList)
+            this.$ajax.post(this.$url.componentHomeFile)
                     .then(res => {
                 console.log(res.data);
             if (res.data.errcode = '0') {

@@ -1,39 +1,46 @@
 <template>
     <!--日程内容部分-->
     <ul>
-        <li v-for="sche in data.schedule">
+        <li v-for="sche in events">
             <header>
                 <h2>{{sche.title}}</h2>
                 <time>{{sche.time}}</time>
             </header>
             <p>{{sche.detail}}</p>
         </li>
+        <li v-if="events.length == 0">
+            <p>暂无数据</p>
+        </li>
     </ul>
 </template>
 
 <script>
-    import api from "@/interface.js";
     export default {
         name: "Schedule",
         data () {
             return {
-                data: ''
+                events: '',
             }
         },
+        props:['sch_date_index'],
         created () {
-            this.$ajax.post(api.schedule_list)
-                    .then(res => {
-                console.log(res.data);
-//            if (res.data.errcode = '0') {
-//                this.appList = res.data.apps;
-//                console.log(this.appList);
-//            } else {
-//                console.log(res.data.errmsg);
-//            }
-        })
-        .catch(err => {
-                console.log(err);
-        });
+                this.$ajax.post(this.$url.componentHomeSchedule,{date : 0})
+                        .then(res => {
+                    console.log(res.data);
+                    this.events = res.data.events;
+                }).catch(err => {
+                        console.log(err);
+                });
+        },
+        methods:{
+            getData:function(index){
+                this.$ajax.post(this.$url.componentHomeSchedule,{date : index})
+                        .then(res => {
+                    console.log(res.data);
+            }).catch(err => {
+                    console.log(err);
+            });
+            }
         }
     };
 </script>

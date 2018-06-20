@@ -9,7 +9,6 @@
 </template>
 
 <script>
-    import api from "@/interface.js";
     export default {
         name: "Notice",
         data () {
@@ -18,7 +17,7 @@
             }
         },
         created () {
-            this.$ajax.post(api.notice_list)
+            this.$ajax.post(this.$url.componentHomeNotice)
                     .then(res => {
                         console.log(res.data);
                         if (res.data.errcode = '0') {

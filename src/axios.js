@@ -1,6 +1,6 @@
 import axios from 'axios';
 import qs from 'querystring'
-import {Message} from 'element-ui'
+import { Loading,Message } from 'element-ui'
 import store from "./store";
 import router from "./router";
 //创建实例 axios.create([config])
@@ -14,11 +14,13 @@ const instance=axios.create({
     'Content-Type':'application/x-www-form-urlencoded'
   }
 });
+var loadinginstace;
 //请求拦截器
 instance.interceptors.request.use(
     config => {
       config.headers.auth="auth";
       //在发送请求之前做些什么
+        loadinginstace = Loading.service({ fullscreen: true })
       if(config.method==="post"){
         // post传参序列化
         config.data = qs.stringify(config.data);
@@ -36,19 +38,29 @@ instance.interceptors.request.use(
       },
     error => {
       //error回调
-      Message({
-        //  饿了么的消息弹窗组件
-        showClose: true,
-        message: error,
-        type: "error.data.error.message"
-      });
+        loadinginstace.close()
+        Message.error({
+            message: '加载超时'
+        })
       return Promise.reject(error);
     });
 //响应拦截器（返回状态判断）
 instance.interceptors.response.use(
     res => {
+        loadinginstace.close();
       console.log(res);
-        return res;
+        if(res.data.errcode == '0'){//正常
+            return res;
+        }else{
+            if(res.data.errmsg){
+                Message({
+                    //  饿了么的消息弹窗组件
+                    showClose: true,
+                    message: res.data.errmsg,
+                    type: "warning"
+                });
+            }
+        }
     },
     err => {
       if (err.response) {

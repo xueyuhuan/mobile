@@ -17,7 +17,7 @@ const router=new Router({
       meta:{
         requireAuth:true,// 添加该字段，表示进入这个路由是需要登录的
       },
-      component: WorkDesk
+      component: resolve => require(['./views/WorkDesk.vue'], resolve)
     },
     {
       path: "/service",
@@ -25,7 +25,7 @@ const router=new Router({
       meta:{
         requireAuth:false,// 添加该字段，表示进入这个路由是需要登录的
       },
-      component: ServiceCenter
+      component: resolve => require(['./views/ServiceCenter'], resolve)
     },
     {
       path: "/app",
@@ -33,15 +33,15 @@ const router=new Router({
       meta:{
         requireAuth:false,// 添加该字段，表示进入这个路由是需要登录的
       },
-      component: AppCenter
+      component: resolve => require(['./views/AppCenter'], resolve)
     },
     {
       path: "/schedule",
-      name: "ScheduleCenter",//应用
+      name: "ScheduleCenter",//日程
       meta:{
         requireAuth:false,// 添加该字段，表示进入这个路由是需要登录的
       },
-      component: ScheduleCenter
+      component: resolve => require(['./views/ScheduleCenter'], resolve)
     },
     {
       path:"/login",

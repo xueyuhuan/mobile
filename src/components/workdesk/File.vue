@@ -19,19 +19,7 @@
             }
         },
         created: function () {
-            this.$ajax.post(this.$url.componentHomeFile)
-                    .then(res => {
-                console.log(res.data);
-            if (res.data.errcode = '0') {
-                this.list = res.data.gongwenList;
-                console.log(this.list);
-            } else {
-                console.log(res.data.errmsg);
-            }
-        }).catch(err => {
-                console.log(err);
-        });
-        }
+            this.$ajax.post(this.$url.componentHomeFile).then(res => {this.list = res.data.gongwenList;})}
     };
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->

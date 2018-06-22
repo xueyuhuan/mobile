@@ -1,5 +1,4 @@
 <template>
-    <!--日程内容部分-->
     <ul>
         <li v-for="sche in events">
             <header>
@@ -8,7 +7,7 @@
             </header>
             <p>{{sche.detail}}</p>
         </li>
-        <li v-if="events.length == 0">
+        <li v-if="events.length === 0">
             <p>暂无数据</p>
         </li>
     </ul>
@@ -24,22 +23,14 @@
         },
         props:['sch_date_index'],
         created () {
-                this.$ajax.post(this.$url.componentHomeSchedule,{date : 0})
-                        .then(res => {
-                    console.log(res.data);
-                    this.events = res.data.events;
-                }).catch(err => {
-                        console.log(err);
-                });
+          this.getData(0);
         },
         methods:{
-            getData:function(index){
+            getData(index){
                 this.$ajax.post(this.$url.componentHomeSchedule,{date : index})
-                        .then(res => {
-                    console.log(res.data);
-            }).catch(err => {
-                    console.log(err);
-            });
+                    .then(res => {
+                      this.events = res.data.events;
+                    })
             }
         }
     };

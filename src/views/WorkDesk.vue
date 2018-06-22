@@ -19,7 +19,7 @@
       <header>
         <h1>我的日程</h1>
         <div class="btn">
-          <span v-for="(item,index) in sch_date" @click="toggle_sch_date(index)" :class="{ active : index == sch_date_index }">{{item}}</span>
+          <span v-for="(item,index) in sch_date" @click="toggle_sch_date(index)" :class="{ active : index === sch_date_index }">{{item}}</span>
         </div>
         <a><img src="../assets/images/dot.png"/></a>
       </header>
@@ -105,7 +105,6 @@ export default {
         this.$ajax.post(this.$url.viewHome)
             .then((res)=>{
               for(let i=0;i<res.data.widgets.length;i++){
-                console.log(res.data.widgets[i].NAME);
                 switch (res.data.widgets[i].NAME) {
                   case '个人中心' :this.Personal=true;
                   case '我的服务' :this.MyService=true;
@@ -120,16 +119,10 @@ export default {
                 }
               }
             })
-            .catch((error)=>{
-                console.log(error);
-            });
     },
   methods:{
     toggle_sch_date(index){
-      console.log(index);
       this.sch_date_index = index;
-//      console.log(this.sch_date_index);
-      console.log(this);
       this.$refs.Schedule.getData(index);
     }
   }

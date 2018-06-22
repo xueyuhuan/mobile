@@ -30,7 +30,7 @@
         name: "Personal",
         data () {
             return {
-                data: ''
+                list: []
             }
         },
         created () {

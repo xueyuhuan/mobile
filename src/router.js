@@ -61,7 +61,6 @@ router.beforeEach((to,from,next) => {
   // next: Function: 一定要调用该方法来 resolve 这个钩子。执行效果依赖 next 方法的调用参数。
   if(to.meta.requireAuth){
     if(store.state.token){
-      console.log("路由守卫中token:"+store.state.token);
       next();
     }
     else {

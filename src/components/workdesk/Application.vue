@@ -6,9 +6,7 @@
     </a>
   </div>
 </template>
-
 <script>
-
 export default {
   name: "Application",
     data () {
@@ -17,19 +15,7 @@ export default {
         }
     },
     created () {
-        this.$ajax.post(this.$url.componentHomeApp)
-                .then(res => {
-                    console.log(res.data.apps);
-                    if(res.data.errcode = '0'){
-                        this.appList = res.data.apps;
-                        console.log(this.appList);
-                    }else {
-                        console.log(res.data.errmsg);
-                    }
-                })
-                .catch(err => {
-                    console.log(err);
-                });
+        this.$ajax.post(this.$url.componentHomeApp).then(res => {this.appList = res.data.apps;})
     }
 };
 </script>
@@ -44,8 +30,8 @@ export default {
     padding:10/@base 20/@base 0;
   }
   a{
-      display: inline-block;
-      /*align-items: center;*/
+    display: inline-block;
+    /*align-items: center;*/
     width: 50%;
     font-size: 14/@base;
     font-family: "Microsoft YaHei","Source Sans Pro","Helvetica Neue",Helvetica,Arial,sans-serif;
@@ -58,6 +44,6 @@ export default {
   img{
     width: 24/@base;
     margin-right: 5/@base;
-      vertical-align: middle;
+    vertical-align: middle;
   }
 </style>

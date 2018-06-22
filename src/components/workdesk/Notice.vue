@@ -17,19 +17,7 @@
             }
         },
         created () {
-            this.$ajax.post(this.$url.componentHomeNotice)
-                    .then(res => {
-                        console.log(res.data);
-                        if (res.data.errcode = '0') {
-                            this.list = res.data.xntzList;
-                            console.log(this.list);
-                        } else {
-                            console.log(res.data.errmsg);
-                        }
-                    })
-                    .catch(err => {
-                            console.log(err);
-                    });
+            this.$ajax.post(this.$url.componentHomeNotice).then(res => {this.list = res.data.xntzList;});
         }
     };
 </script>
@@ -40,16 +28,13 @@
         width: 100%;
         background: #fff;
     }
-
     li {
         padding: 5 / @base 20px;
         border-bottom: 1px dashed #bfbfbf;
     }
-
     li:last-child {
         border: none
     }
-
     header {
         display: flex;
         align-items: center;
@@ -60,7 +45,6 @@
         color: #000000;
         margin: 0 0 5 / @base;
     }
-
     h2 {
         font-size: 14 / @base;
         font-weight: 500;
@@ -69,12 +53,10 @@
         overflow: hidden;
         text-overflow: ellipsis;
     }
-
     time {
         display: block;
         flex: none;
     }
-
     p {
         height: 24 / @base;
         white-space: nowrap;

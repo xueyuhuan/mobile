@@ -19,7 +19,6 @@
 </template>
 
 <script type="text/ecmascript-6">
-//    var echarts = require('echarts');
 import echarts from "echarts";
     export default {
         data(){
@@ -30,7 +29,7 @@ import echarts from "echarts";
         },
         created(){
 //            this.getPay();//拿数据
-            console.log(this.$url.componentHomePay);
+
             this.$ajax.post(this.$url.componentHomePay)
                     .then((res)=>{
                         console.log(res.data);

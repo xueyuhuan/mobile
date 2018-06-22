@@ -16,14 +16,7 @@ export default {
         }
     },
     created:function () {
-      this.$ajax.post(this.$url.componentHomeService)
-              .then(res => {
-                console.log(res);
-                this.service_list = res.data.services
-              })
-              .catch(err => {
-                console.log(err);
-              })
+      this.$ajax.post(this.$url.componentHomeService).then(res => {this.service_list = res.data.services;});
     }
 };
 </script>

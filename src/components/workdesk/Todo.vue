@@ -1,11 +1,14 @@
 <template>
     <!--我的待办内容部分-->
     <ul>
-        <li v-for="every in data.schedule">
-            <header><h2>{{every.title}}</h2>
-                <time>{{every.time}}</time>
+        <li v-for="item in list">
+            <header><h2>{{item.title}}</h2>
+                <time>{{item.time}}</time>
             </header>
-            <p>{{every.detail}}</p>
+            <p>{{item.detail}}</p>
+        </li>
+        <li v-if="list.length === 0">
+            <p>暂无待办</p>
         </li>
     </ul>
 </template>
@@ -15,18 +18,11 @@
         name: "Todo",
         data () {
             return {
-                data: ''
+                list: []
             }
         },
         created () {
-            this.$ajax.post(this.$url.componentHomeTodo)
-                    .then(res => {
-                console.log(res.data);
-//            this.service_list = res.data.services
-        }).catch(err => {
-                console.log(err);
-        })
-        }
+            this.$ajax.post(this.$url.componentHomeTodo,{updateFlag: true}).then(res => {this.list = res.data.todoList;});}
     };
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->

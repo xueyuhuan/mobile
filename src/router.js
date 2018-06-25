@@ -1,12 +1,10 @@
 import Vue from "vue";
 import Router from "vue-router";
-import store from "./store";
 
 import WorkDesk from "./views/WorkDesk.vue";
 import ServiceCenter from "./views/ServiceCenter";
 import AppCenter from "./views/AppCenter";
 import ScheduleCenter from "./views/ScheduleCenter"
-// import SetUp from "./views/SetUp";
 import Login from "./views/Login.vue";
 Vue.use(Router);
 

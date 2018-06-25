@@ -65,18 +65,12 @@
             .then((res)=>{
               this.calendar=res.data.days;
             })
-            .catch((error)=>{
-              console.log(error);
-            });
       },
       getEvent(){
         this.$ajax.post('/api/calendar_portal/get_events_date',this.dateData)
             .then((res)=>{
               this.event=res.data.calObjs;
             })
-            .catch((error)=>{
-              console.log(error);
-            });
       },
       chooseDay(day){
         this.dateData.day=day;

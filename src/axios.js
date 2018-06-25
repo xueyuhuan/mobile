@@ -42,14 +42,20 @@ instance.interceptors.response.use(
         }
         else{
             if(res.data.errmsg){
-              Vue.prototype.$message.error(res.data.errmsg);
+              Vue.prototype.$message({
+                type:'info',
+                message:res.data.errmsg
+              });
             }
         }
     },
     err => {
       loading.close();
       if (err.response) {
-        Vue.prototype.$message.error(err.response.status);
+        Vue.prototype.$message({
+          type:'info',
+          message:err.response.status
+        });
         switch (err.response.status) {
           case 403:
             router.replace({

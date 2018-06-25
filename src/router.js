@@ -6,6 +6,7 @@ import WorkDesk from "./views/WorkDesk.vue";
 import ServiceCenter from "./views/ServiceCenter";
 import AppCenter from "./views/AppCenter";
 import ScheduleCenter from "./views/ScheduleCenter"
+// import SetUp from "./views/SetUp";
 import Login from "./views/Login.vue";
 Vue.use(Router);
 
@@ -42,6 +43,14 @@ const router=new Router({
         requireAuth:true,// 添加该字段，表示进入这个路由是需要登录的
       },
       component: resolve => require(['./views/ScheduleCenter'], resolve)
+    },
+    {
+      path: "/set",
+      name: "SetUp",
+      meta:{
+        requireAuth:true,
+      },
+      component: resolve => require(['./views/SetUp'], resolve)
     },
     {
       path:"/login",

@@ -23,7 +23,7 @@ const router=new Router({
       path: "/service",
       name: "ServiceCenter",//服务
       meta:{
-        requireAuth:false,// 添加该字段，表示进入这个路由是需要登录的
+        requireAuth:true,// 添加该字段，表示进入这个路由是需要登录的
       },
       component: resolve => require(['./views/ServiceCenter'], resolve)
     },
@@ -31,7 +31,7 @@ const router=new Router({
       path: "/app",
       name: "AppCenter",//应用
       meta:{
-        requireAuth:false,// 添加该字段，表示进入这个路由是需要登录的
+        requireAuth:true,// 添加该字段，表示进入这个路由是需要登录的
       },
       component: resolve => require(['./views/AppCenter'], resolve)
     },
@@ -39,7 +39,7 @@ const router=new Router({
       path: "/schedule",
       name: "ScheduleCenter",//日程
       meta:{
-        requireAuth:false,// 添加该字段，表示进入这个路由是需要登录的
+        requireAuth:true,// 添加该字段，表示进入这个路由是需要登录的
       },
       component: resolve => require(['./views/ScheduleCenter'], resolve)
     },
@@ -60,7 +60,7 @@ router.beforeEach((to,from,next) => {
   // from: Route: 当前导航正要离开的路由
   // next: Function: 一定要调用该方法来 resolve 这个钩子。执行效果依赖 next 方法的调用参数。
   if(to.meta.requireAuth){
-    if(store.state.token){
+    if(sessionStorage.token){
       next();
     }
     else {

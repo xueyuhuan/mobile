@@ -8,7 +8,7 @@
       </div>
     </div>
     <ul v-show="isShow">
-      <li v-for="(item,index) in array" @click="toggle(index)"><router-link :to="item.url"><span :class="{active:index===active}">{{item.name}}</span></router-link></li>
+      <li v-for="(item,index) in array" @click="toggle(item.url)"><router-link :to="item.url"><span :class="{active:item.url.substring(0,6)===active.substring(0,6)}">{{item.name}}</span></router-link></li>
     </ul>
   </nav>
 </template>
@@ -21,17 +21,21 @@ export default {
       array:[
         {name:'工作台',url:'/'},
         {name:'服务',url:'/service'},
-        // {name:'咨询',url:'/'},
+        // {name:'资讯',url:'/'},
         {name:'应用',url:'/app'},
         {name:'日程',url:'/schedule'},
       ],
-      active:0,
-      isShow:false,
+      active:"",
+      isShow:false
     }
   },
+  created(){
+    console.log(this.$route);
+    this.active=this.$route.path;
+  },
   methods:{
-    toggle(index){
-      this.active=index;
+    toggle(url){
+      this.active=url;
       this.isShow=false;
     }
   }

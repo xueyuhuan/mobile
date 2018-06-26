@@ -1,19 +1,24 @@
 
 <template>
     <div class="schedule_artical">
-        <div class="salary_title">
-            <p class="salary_title_p">{{title}}</p>
-            <p class="salary_title_p">
-                <span>应发合计：{{salary.YFHJ}}</span>
-                <span>扣款合计：{{salary.KKHJ}}</span>
-            </p>
-            <p class="salary_title_p">
-                <span>实发合计：{{salary.SFGZ}}</span>
-                <span>上月津贴：{{salary.XNJT}}</span>
-            </p>
-        </div>
-        <div id="salary_div">
+        <div v-if="title">
+            <div class="salary_title">
+                <p class="salary_title_p">{{title}}</p>
+                <p class="salary_title_p">
+                    <span>应发合计：{{salary.YFHJ}}</span>
+                    <span>扣款合计：{{salary.KKHJ}}</span>
+                </p>
+                <p class="salary_title_p">
+                    <span>实发合计：{{salary.SFGZ}}</span>
+                    <span>上月津贴：{{salary.XNJT}}</span>
+                </p>
+            </div>
+            <div id="salary_div">
 
+            </div>
+        </div>
+        <div v-if="!title" class="nodata">
+            暂无数据
         </div>
     </div>
 </template>

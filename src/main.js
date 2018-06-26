@@ -11,8 +11,6 @@ import url from './url'
 import 'lib-flexible';
 import 'font-awesome/css/font-awesome.css'
 /*引入公共样式*/
-import './assets/css/font-awesome.css';
-import './assets/css/iconfont.css';
 import './assets/css/all.less';
 
 Vue.config.productionTip = false;

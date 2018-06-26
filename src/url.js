@@ -1,4 +1,5 @@
-let api='/api';
+let api=process.env.VUE_APP_PROXY;
+// let api='/api';
 export default {
   login:api+'/security_portal/login',//登录
   viewHome:api+'/page_portal/get_user_layout',//工作台布局

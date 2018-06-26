@@ -9,3 +9,5 @@ npm install
 [Axios中文说明](https://www.kancloud.cn/yunye/axios/234845)
 ## vuex
 [Vuex](https://vuex.vuejs.org/zh/guide/)
+## 打包
+num run build-mobile

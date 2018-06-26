@@ -3,11 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "vue-cli-service serve --open",
-    "prod": "vue-cli-service serve --mode production",
-    "uat": "vue-cli-service serve --mode test",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
+    "build-mobile":"vue-cli-service build --mode mobile",
     "lint": "vue-cli-service lint",
     "test:unit": "vue-cli-service test:unit"
   },

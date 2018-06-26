@@ -61,13 +61,13 @@
         this.today=date.getFullYear()+'/'+(date.getMonth()+1)+'/'+date.getDate();
       },
       getCalendar(){
-        this.$ajax.post('/api/calendar_portal/getCalendar',{year:this.dateData.year,month:this.dateData.month})
+        this.$ajax.post(this.$url.componentCalendar,{year:this.dateData.year,month:this.dateData.month})
             .then((res)=>{
               this.calendar=res.data.days;
             })
       },
       getEvent(){
-        this.$ajax.post('/api/calendar_portal/get_events_date',this.dateData)
+        this.$ajax.post(this.$url.componentCalendarEvents,this.dateData)
             .then((res)=>{
               this.event=res.data.calObjs;
             })

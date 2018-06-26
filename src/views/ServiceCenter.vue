@@ -68,21 +68,21 @@
       this.getList();
     },
     mounted:function(){
-      this.$ajax.post('/api/service_portal/query_service_type_all')
+      this.$ajax.post(this.$url.componentServiceCenter_fwly)
           .then((res)=>{
             this.field=res.data.serviceTypeList;
           })
           .catch((error)=>{
             console.log(error);
           });
-      this.$ajax.post('/api/service_portal/list_manage_dept')
+      this.$ajax.post(this.$url.componentServiceCenter_fzbm)
           .then((res)=>{
             this.department=res.data.depts;
           })
           .catch((error)=>{
             console.log(error);
           });
-      this.$ajax.post('/api/service_portal/list_user_group')
+      this.$ajax.post(this.$url.componentServiceCenter_fwdx)
           .then((res)=>{
             this.object=res.data.groups;
           })
@@ -156,7 +156,7 @@
         this.getList();
       },
       getList(){//拉取列表
-        this.$ajax.post('/api/service_portal/list',this.searchData)
+        this.$ajax.post(this.$url.componentServiceCenter_list,this.searchData)
             .then((res)=>{
               console.log(res);
               this.searchList=res.data.page.rows;

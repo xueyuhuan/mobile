@@ -30,12 +30,12 @@
       }
     },
     created(){
-      this.$ajax.post('/api/msg_portal/query_unread')
+      this.$ajax.post(this.$url.componentMsgUnread)
           .then((res)=>{
             this.unread=res.data.unreadMessages;
             this.list=this.unread;
           });//未读
-      this.$ajax.post('/api/msg_portal/query',{page:1,limit:10}).then((res)=>{this.all=res.data.page.rows;});//应用
+      this.$ajax.post(this.$url.componentMsgRead,{page:1,limit:10}).then((res)=>{this.all=res.data.page.rows;});//应用
     },
     methods:{
       toggle(type){

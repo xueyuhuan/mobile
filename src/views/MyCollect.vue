@@ -31,9 +31,11 @@
       }
     },
     created(){
-      this.$ajax.post('/api/service_portal/get_user_favorites').then((res)=>{this.service=res.data.services;});//服务
-      this.$ajax.post('/api/app_portal/get_user_favorites').then((res)=>{this.app=res.data.apps;});//应用
-      this.$ajax.post('/api/news_portal/getMyNews').then((res)=>{this.info=res.data.result;});//资讯
+      this.$ajax.post(this.$url.componentCollectService)
+              .then((res)=>{this.service=res.data.services;})
+              .catch((err)=>{console.log(err)});//服务
+      this.$ajax.post(this.$url.componentCollectApp).then((res)=>{this.app=res.data.apps;});//应用
+      this.$ajax.post(this.$url.componentCollectNews).then((res)=>{this.info=res.data.result;});//资讯
     },
     methods:{
       toggle(type){

@@ -109,7 +109,7 @@ export default {
       }
   }
   .nodata{
-      padding: 5 / @base 20/@base;
+      padding: 5 / @base 20/ @base;
       border-bottom: 1px dashed #bfbfbf;
       font-size: 12 / @base;
       color: #959595;

@@ -29,7 +29,7 @@
       }
     },
     created(){
-      this.$ajax.post('/api/task_portal/get_apps')
+      this.$ajax.post(this.$url.componentMytodo)
           .then((res)=>{
             this.todo=res.data.apps;
             for (let i=0;i<this.todo.length;i++){

@@ -21,7 +21,7 @@
       }
     },
     created() {
-      this.$ajax.post('/api/app_portal/list_app_group')
+      this.$ajax.post(this.$url.componentAppCenter)
           .then((res)=>{
             console.log(res);
             this.list=res.data.groups;

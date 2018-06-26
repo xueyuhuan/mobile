@@ -6,7 +6,7 @@ if(env==='production'){  // 生产环境
   target = 'http://onetest.ccnu.edu.cn';
 }else{  // 开发环境
   //target = 'http://192.168.0.19:8080';
-    target = ' http://192.168.0.8:88/portal';
+    target = 'http://192.168.0.8:88/portal';
 }
 
 module.exports = {

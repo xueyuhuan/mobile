@@ -67,6 +67,22 @@ const router=new Router({
       component: resolve => require(['./views/MyNews'], resolve)
     },
     {
+      path: "/my_todo",
+      name: "办事中心",
+      meta:{
+        requireAuth:true,
+      },
+      component: resolve => require(['./views/MyTodo'], resolve)
+    },
+    {
+      path: "/my_person",
+      name: "个人信息",
+      meta:{
+        requireAuth:true,
+      },
+      component: resolve => require(['./views/MyPerson'], resolve)
+    },
+    {
       path:"/login",
       name:"login",
       component: Login

@@ -71,10 +71,10 @@ const router=new Router({
       name:"login",
       component: Login
     },
-    {
-      path: '**',   // 错误路由
-      redirect: '/'   //重定向
-    },
+    //{
+    //  path: '**',   // 错误路由
+    //  redirect: '/'   //重定向
+    //},
   ]
 });
 // 全局路由守卫
@@ -84,6 +84,7 @@ router.beforeEach((to,from,next) => {
   // next: Function: 一定要调用该方法来 resolve 这个钩子。执行效果依赖 next 方法的调用参数。
   if(to.meta.requireAuth){
     if(sessionStorage.token){
+      console.log(to);
       next();
     }
     else {

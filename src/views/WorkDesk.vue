@@ -18,10 +18,12 @@
     <section class="wk_card" v-if="MySchedule">
       <header>
         <h1>我的日程</h1>
-        <div class="btn"><span class="active">今天</span><span>明天</span><span>后天</span></div>
+        <div class="btn">
+          <span v-for="(item,index) in sch_date" @click="toggle_sch_date(index)" :class="{ active : index === sch_date_index }">{{item}}</span>
+        </div>
         <a><img src="../assets/images/dot.png"/></a>
       </header>
-      <Schedule></Schedule>
+      <Schedule ref="Schedule" :sch_date_index="sch_date_index"></Schedule>
     </section>
     <!--校内通知-->
     <section v-if="Notice">
@@ -52,15 +54,16 @@
       <Personal></Personal>
     </section>
     <!--工资查询-->
-    <section v-if="File">
+    <section v-if="Pay">
       <header>
         <h1>工资查询</h1><a><img src="../assets/images/dot.png"/></a>
       </header>
+      <Pay></Pay>
     </section>
   </div>
 </template>
 
-<script>
+<script >
 // @ is an alias to /src
 import Application from "@/components/workdesk/Application.vue";
 import Service from "@/components/workdesk/Service.vue";
@@ -69,6 +72,8 @@ import Notice from "@/components/workdesk/Notice.vue";
 import Todo from "@/components/workdesk/Todo.vue";
 import File from "@/components/workdesk/File.vue";
 import Personal from "@/components/workdesk/Personal.vue";
+import Pay from "@/components/workdesk/Pay.vue";
+
 export default {
   name: "WorkDesk",
     components: {
@@ -78,12 +83,12 @@ export default {
       Notice,
       Todo,
       File,
-      Personal
+      Personal,
+      Pay
     },
-
     data: function () {
         return {
-          MyApp:false,
+          MyApp:true,
           MyService:false,
           MySchedule:false,
           Notice:false,
@@ -91,14 +96,15 @@ export default {
           File:false,
           Personal:false,
           Pay:false,
-          Rankings:false
+          Rankings:false,
+          sch_date:['今天','明天','后天'],
+          sch_date_index:0
         }
     },
     created:function () {
-        this.$ajax.post('/api/page_portal/get_user_layout')
+        this.$ajax.post(this.$url.viewHome)
             .then((res)=>{
               for(let i=0;i<res.data.widgets.length;i++){
-                console.log(res.data.widgets[i].NAME);
                 switch (res.data.widgets[i].NAME) {
                   case '个人中心' :this.Personal=true;
                   case '我的服务' :this.MyService=true;
@@ -113,10 +119,13 @@ export default {
                 }
               }
             })
-            .catch((error)=>{
-                console.log(error);
-            });
+    },
+  methods:{
+    toggle_sch_date(index){
+      this.sch_date_index = index;
+      this.$refs.Schedule.getData(index);
     }
+  }
 };
 </script>
 

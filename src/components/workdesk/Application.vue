@@ -1,34 +1,21 @@
 <template>
   <div class="application">
-    <!--<a href="#">-->
-      <!--<img src="../assets/images/temp.png"/>-->
-      <!--一张表流程平台奥斯卡级到哈市开掘到-->
-    <!--</a>-->
-    <a v-for="app in data.application" :href="app.appUrl">
-      <img :src="app.appImgSrc"/>
-      {{app.appName}}
+    <a v-for="app in appList" :href="app.url">
+      <img :src="'/api/resource/app?id=' + app.id"/>
+      {{app.name}}
     </a>
   </div>
 </template>
-
 <script>
 export default {
   name: "Application",
-    data: function () {
+    data () {
         return {
-            data: ''
+            appList: []
         }
     },
-    created:function () {
-        let self = this;
-        this.$ajax.get('/data1.json')
-            .then(function (response) {
-                self.data=response.data.workDesk;
-                console.log(response.data.workDesk);
-            })
-            .catch(function (response) {
-                console.log(response);
-            });
+    created () {
+        this.$ajax.post(this.$url.componentHomeApp).then(res => {this.appList = res.data.apps;})
     }
 };
 </script>
@@ -43,8 +30,8 @@ export default {
     padding:10/@base 20/@base 0;
   }
   a{
-    display: flex;
-    align-items: center;
+    display: inline-block;
+    /*align-items: center;*/
     width: 50%;
     font-size: 14/@base;
     font-family: "Microsoft YaHei","Source Sans Pro","Helvetica Neue",Helvetica,Arial,sans-serif;
@@ -57,5 +44,6 @@ export default {
   img{
     width: 24/@base;
     margin-right: 5/@base;
+    vertical-align: middle;
   }
 </style>

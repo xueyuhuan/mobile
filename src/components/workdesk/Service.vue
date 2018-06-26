@@ -1,8 +1,8 @@
 <template>
   <div class="service">
-    <a v-for="app in data.application" :href="app.appUrl">
-      <img :src="app.appImgSrc"/>
-      {{app.appName}}
+    <a v-for="item in service_list" :href="item.url">
+      <img :src="'/api/resource/service?id=' + item.id"/>
+      {{item.name}}
     </a>
   </div>
 </template>
@@ -12,19 +12,11 @@ export default {
   name: "Service",
     data: function () {
         return {
-            data: ''
+            service_list: ''
         }
     },
     created:function () {
-      let self = this;
-      this.$ajax.get('http://localhost:1234/data1.json')
-          .then(function (response) {
-            self.data=response.data.workDesk;
-            console.log(response.data.workDesk);
-          })
-          .catch(function (response) {
-            console.log(response);
-          });
+      this.$ajax.post(this.$url.componentHomeService).then(res => {this.service_list = res.data.services;});
     }
 };
 </script>
@@ -39,8 +31,8 @@ export default {
     padding:10/@base 20/@base 0;
   }
   a{
-    display: flex;
-    align-items: center;
+    display: inline-block;
+    /*align-items: center;*/
     width: 50%;
     font-size: 14/@base;
     font-family: "Microsoft YaHei","Source Sans Pro","Helvetica Neue",Helvetica,Arial,sans-serif;
@@ -53,5 +45,6 @@ export default {
   img{
     width: 24/@base;
     margin-right: 5/@base;
+    vertical-align: middle;
   }
 </style>

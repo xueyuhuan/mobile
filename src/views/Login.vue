@@ -17,7 +17,7 @@ export default {
   },
   methods: {
     login: function () {
-      this.$ajax.post('/api/security_portal/login',{username: this.name,password: this.password})
+      this.$ajax.post(this.$url.login,{username: this.name,password: this.password})
           .then(res => {
             this.$store.commit('set_token',res.data.token);//在store.js中设置token
             this.$router.push({path: '/'});
@@ -27,7 +27,7 @@ export default {
 };
 </script>
 
-<style lang="less">
+<style scoped lang="less">
   .login{
     margin: 100px;
   }

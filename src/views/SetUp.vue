@@ -7,9 +7,9 @@
         </div>
         <ul>
             <li><router-link to="/my_collect"><span><i style="margin-right: 10px" class="fa fa-star-o"></i>我的收藏</span><i class="fa fa-angle-right"></i></router-link></li>
-            <li><router-link to="/my_news"><span><i style="margin-right: 10px" class="fa fa-star-o"></i>我的消息</span><i class="fa fa-angle-right"></i></router-link></li>
-            <li><a><span><i style="margin-right: 10px" class="fa fa-star-o"></i>办事中心</span><i class="fa fa-angle-right"></i></a></li>
-            <li><a><span><i style="margin-right: 10px" class="fa fa-star-o"></i>个人信息</span><i class="fa fa-angle-right"></i></a></li>
+            <li><router-link to="/my_news"><span><i style="margin-right: 10px" class="fa fa-bell-o"></i>我的消息</span><i class="fa fa-angle-right"></i></router-link></li>
+            <li><a><span><i style="margin-right: 10px" class="fa fa-desktop"></i>办事中心</span><i class="fa fa-angle-right"></i></a></li>
+            <li><a><span><i style="margin-right: 10px" class="fa fa-user-o"></i>个人信息</span><i class="fa fa-angle-right"></i></a></li>
         </ul>
         <div class="btn">
             <button @click="logout">注销</button>

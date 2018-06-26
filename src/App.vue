@@ -5,8 +5,8 @@
           <div class="nav">
               <img class="logo" src="./assets/images/logo.png"/>
               <div>
-                  <i @click="isShow=!isShow" class="iconfont icon-category btn menu"></i>
-                  <router-link to="/set"><i class="iconfont icon-set btn set"></i></router-link>
+                  <i @click="isShow=!isShow" class="fa fa-list-ul btn menu" style="font-weight: normal"></i>
+                  <router-link to="/set"><i class="fa fa-cog btn set" style="font-weight: normal"></i></router-link>
               </div>
           </div>
           <ul v-show="isShow">
@@ -109,12 +109,11 @@ export default {
       }
   }
   .nodata{
-      padding: 5 / @base 20px;
+      padding: 5 / @base 20/@base;
       border-bottom: 1px dashed #bfbfbf;
       font-size: 12 / @base;
       color: #959595;
       font-family: "Microsoft YaHei", "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
       margin: 0;
   }
-
 </style>

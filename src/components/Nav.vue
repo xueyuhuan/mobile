@@ -4,7 +4,7 @@
       <img class="logo" src="../assets/images/logo.png"/>
       <div>
         <i @click="isShow=!isShow" class="iconfont icon-category btn menu"></i>
-        <router-link to="/set"><i class="iconfont icon-set btn set"></i></router-link>
+        <router-link to="/set"><i class="fa fa-cog btn set"></i></router-link>
       </div>
     </div>
     <ul v-show="isShow">

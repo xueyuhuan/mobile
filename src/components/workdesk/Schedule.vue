@@ -21,7 +21,6 @@
                 events: '',
             }
         },
-        props:['sch_date_index'],
         created () {
           this.getData(0);
         },

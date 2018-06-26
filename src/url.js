@@ -9,5 +9,6 @@ export default {
   componentHomeNotice:api+'/notice_portal/noticeList',//组件-工作台-校内通知
   componentHomeTodo:api+'/task_portal/query_todo_all',//组件-工作台-代办
   componentHomeUser:api+'/user_portal/user_center_modules',//组件-工作台-个人中心
-  componentHomePay:api+'/user_portal/salary'//组件-工作台-工资
+  componentHomePay:api+'/user_portal/salary',//组件-工作台-工资
+  componentServiceRank:api+'/service_portal/stat_usertype'//组件-工作台-服务排行
 }

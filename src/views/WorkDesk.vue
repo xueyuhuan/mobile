@@ -60,6 +60,16 @@
       </header>
       <Pay></Pay>
     </section>
+    <!--服务排行-->
+    <section v-if="Rankings">
+      <header>
+        <h1>服务排行</h1>
+        <div class="btn">
+          <span v-for="(item,index) in service_rank" @click="toggle_service_rank(item.type,index)" :class="{ active : index === service_rank_index }">{{item.name}}</span>
+        </div>
+      </header>
+      <Rankings ref="Rankings"></Rankings>
+    </section>
   </div>
 </template>
 
@@ -73,6 +83,7 @@ import Todo from "@/components/workdesk/Todo.vue";
 import File from "@/components/workdesk/File.vue";
 import Personal from "@/components/workdesk/Personal.vue";
 import Pay from "@/components/workdesk/Pay.vue";
+import Rankings from "@/components/workdesk/Rankings.vue";
 
 export default {
   name: "WorkDesk",
@@ -84,7 +95,8 @@ export default {
       Todo,
       File,
       Personal,
-      Pay
+      Pay,
+      Rankings
     },
     data: function () {
         return {
@@ -98,7 +110,9 @@ export default {
           Pay:false,
           Rankings:false,
           sch_date:['今天','明天','后天'],
-          sch_date_index:0
+          sch_date_index:0,
+          service_rank:[{name:'本周',type:1},{name:'本月',type:2},{name:'本年',type:3}],
+          service_rank_index:0
         }
     },
     created:function () {
@@ -121,9 +135,21 @@ export default {
             })
     },
   methods:{
+    /***
+     * 切换我的日程
+     * @param index 0、1、2分别代表今天明天后天
+       */
     toggle_sch_date(index){
       this.sch_date_index = index;
       this.$refs.Schedule.getData(index);
+    },
+    /***
+     * 切换服务排行
+     * type 1、2、3分别代表本周、本月、本年
+     */
+    toggle_service_rank(type,index){
+      this.service_rank_index = index;
+      this.$refs.Rankings.getData(type);
     }
   }
 };

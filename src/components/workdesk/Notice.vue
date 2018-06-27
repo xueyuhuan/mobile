@@ -17,7 +17,7 @@
             }
         },
         created () {
-            this.$ajax.post(this.$url.componentHomeNotice).then(res => {this.list = res.data.xntzList;});
+            this.$ajax.post(this.$url.componentHomeNotice).then(res => {this.list = res.data.xntzList.slice(0,5)});
         }
     };
 </script>

@@ -13,7 +13,9 @@
               <li v-for="(item) in array" @click="toggle(item.url)"><router-link :to="item.url"><span :class="{active:item.url===active}">{{item.name}}</span></router-link></li>
           </ul>
       </nav>
-    <router-view/>
+      <keep-alive :exclude="exclude_component_name">
+          <router-view/>
+      </keep-alive>
   </div>
 </template>
 
@@ -37,7 +39,8 @@ export default {
                 {name:'日程',url:'/schedule'},
             ],
             active:"",
-            isShow:false
+            isShow:false,
+            exclude_component_name:['Login']
         }
     },
     mounted(){

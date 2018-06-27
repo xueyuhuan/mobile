@@ -5,7 +5,8 @@
             <span>待办来源</span>
             <el-dropdown trigger="click" @command="handleCommand"><span class="el-dropdown-link">{{origin}}<i class="el-icon-arrow-down el-icon--right"></i></span>
                 <el-dropdown-menu slot="dropdown">
-                    <el-dropdown-item v-for="item in todo" :command="item.name">{{item.name}}</el-dropdown-item>
+                    <el-dropdown-item command="全部">全部</el-dropdown-item>
+                    <el-dropdown-item v-for="(item,index) in todo" :command="index">{{item.name}}</el-dropdown-item>
                 </el-dropdown-menu>
             </el-dropdown>
         </div>
@@ -23,8 +24,9 @@
     name: "MyTodo",
     data(){
       return{
-        todo:[],
-        list:[],
+        todo:[],//返回的二维数组
+        all:[],//拼接的全部数组
+        list:[],//显示数组
         origin:'全部'
       }
     },
@@ -33,13 +35,21 @@
           .then((res)=>{
             this.todo=res.data.apps;
             for (let i=0;i<this.todo.length;i++){
-              this.list=this.list.concat(this.todo[i].todoList);
+              this.all=this.all.concat(this.todo[i].todoList);
             }
+            this.list=this.all;
           });
     },
     methods:{
       handleCommand(command) {
-        this.origin=command;
+        if(command==='全部'){
+          this.origin=command;
+          this.list=this.all;
+        }
+        else{
+          this.origin=this.todo[command].name;
+          this.list=this.todo[command];
+        }
       }
     }
   }

@@ -19,7 +19,7 @@
             }
         },
         created: function () {
-            this.$ajax.post(this.$url.componentHomeFile).then(res => {this.list = res.data.gongwenList;})}
+            this.$ajax.post(this.$url.componentHomeFile).then(res => {this.list = res.data.gongwenList.slice(0,5);})}
     };
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->

@@ -48,7 +48,7 @@
         }
         else{
           this.origin=this.todo[command].name;
-          this.list=this.todo[command];
+          this.list=this.todo[command].todoList;
         }
       }
     }

@@ -22,7 +22,7 @@
         </div>
         <ul class="list">
             <li v-for="item in searchList"><a>
-                <img src="../assets/images/temp.png" alt="图片.jpg"/>
+                <img :src="imgPath+'/resource/service?id='+item.id"/>
                 <div class="info">
                     <header>{{item.name}}</header>
                     <p>服务类别:{{item.type2Name}}<i class="fa fa-eye"></i>&nbsp;{{item.viewCount}}<i class="fa fa-star"></i>&nbsp;{{item.favCount}}</p>
@@ -37,6 +37,7 @@
     name: "ServiceCenter",
     data(){
       return{
+        imgPath:process.env.NODE_ENV==='production'?'':'/api',
         show:{
           isField:false,
           isDepartment:false,
@@ -119,19 +120,19 @@
       search(type,item){//选择下拉列表一项搜索
         this.initShow();
         this.isCondition=true;
-        if(type=="field"){
+        if(type==="field"){
           this.condition[0]='服务领域：'+item.name;
           this.searchData.type2=item.id;
         }
-        if(type=="department"){
+        if(type==="department"){
           this.condition[1]='负责部门：'+item.name;
           this.searchData.managerDeptId=item.id;
         }
-        if(type=="mode"){
+        if(type==="mode"){
           this.condition[2]='服务方式：'+item.name;
           this.searchData.lineAble=item.id;
         }
-        if(type=="object"){
+        if(type==="object"){
           this.condition[3]='服务对象：'+item.groupName;
           this.searchData.userGroupId=item.id;
         }

@@ -1,6 +1,6 @@
 <template>
     <div class="serviceCenter">
-        <input placeholder="搜索服务" type="search"/>
+        <input v-model="searchData.key" placeholder="搜索服务" type="search" @keyup.13="getList()"/>
         <ul class="dropdown">
             <li v-for="(item,index) in dropdown" @click="toggle(index)">{{item}}<i class="fa fa-angle-down"></i></li>
         </ul>
@@ -25,7 +25,7 @@
                 <img :src="imgPath+'/resource/service?id='+item.id"/>
                 <div class="info">
                     <header>{{item.name}}</header>
-                    <p>服务类别:{{item.type2Name}}<i class="fa fa-eye"></i>&nbsp;{{item.viewCount}}<i class="fa fa-star"></i>&nbsp;{{item.favCount}}</p>
+                    <p>服务类别:{{item.type2Name}}<i class="fa fa-eye"></i>&nbsp;{{item.viewCount}}<i class="fa fa-star" :class="{yellow:item.favCount>0}"></i>&nbsp;{{item.favCount}}</p>
                 </div>
             </a></li>
         </ul>
@@ -74,6 +74,9 @@
       this.$ajax.post(this.$url.componentServiceCenter_fwdx).then((res)=>{this.object=res.data.groups;});
     },
     methods:{
+      getList(){//拉取列表
+        this.$ajax.post(this.$url.componentServiceCenter_list,this.searchData).then((res)=>{this.searchList=res.data.page.rows;})
+      },
       initShow(){//初始化下拉菜单为不显示
         this.show.isField=false;
         this.show.isDepartment=false;
@@ -137,9 +140,6 @@
           this.searchData.userGroupId=item.id;
         }
         this.getList();
-      },
-      getList(){//拉取列表
-        this.$ajax.post(this.$url.componentServiceCenter_list,this.searchData).then((res)=>{this.searchList=res.data.page.rows;})
       }
     }
   }
@@ -237,5 +237,8 @@
     }
     ul.list a .info p i:last-child{
         margin-left: 10/@base;
+    }
+    .yellow{
+        color: #fad733;
     }
 </style>

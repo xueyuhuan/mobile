@@ -3,14 +3,14 @@
     <!--我的应用-->
     <section v-if="MyApp">
       <header>
-        <h1>我的应用</h1><a><img src="../assets/images/dot.png"/></a>
+        <h1>我的应用</h1><a><i class="fa fa-ellipsis-h"></i></a>
       </header>
       <Application></Application>
     </section>
     <!--我的服务-->
     <section v-if="MyService">
       <header>
-        <h1>我的服务</h1><a><img src="../assets/images/dot.png"/></a>
+        <h1>我的服务</h1><a><i class="fa fa-ellipsis-h"></i></a>
       </header>
       <Service></Service>
     </section>
@@ -21,42 +21,42 @@
         <div class="btn">
           <span v-for="(item,index) in sch_date" @click="toggle_sch_date(index)" :class="{ active : index === sch_date_index }">{{item}}</span>
         </div>
-        <a><img src="../assets/images/dot.png"/></a>
+        <a><i class="fa fa-ellipsis-h"></i></a>
       </header>
       <Schedule ref="Schedule" :sch_date_index="sch_date_index"></Schedule>
     </section>
     <!--校内通知-->
     <section v-if="Notice">
       <header>
-        <h1>校内通知</h1><a><img src="../assets/images/dot.png"/></a>
+        <h1>校内通知</h1><a><i class="fa fa-ellipsis-h"></i></a>
       </header>
       <Notice></Notice>
     </section>
     <!--我的待办-->
     <section v-if="MyTodo">
       <header>
-        <h1>我的待办</h1><a><img src="../assets/images/dot.png"/></a>
+        <h1>我的待办</h1><a><i class="fa fa-ellipsis-h"></i></a>
       </header>
       <Todo></Todo>
     </section>
     <!--学校公文|历史公文-->
     <section v-if="File">
       <header>
-        <h1>学校公文<a class="history-file">历史公文</a></h1><a><img src="../assets/images/dot.png"/></a>
+        <h1>学校公文<a class="history-file">历史公文</a></h1><a><i class="fa fa-ellipsis-h"></i></a>
       </header>
       <File></File>
     </section>
     <!--个人中心-->
     <section v-if="Personal">
       <header>
-        <h1>个人中心</h1><a><img src="../assets/images/dot.png"/></a>
+        <h1>个人中心</h1><a><i class="fa fa-ellipsis-h"></i></a>
       </header>
       <Personal></Personal>
     </section>
     <!--工资查询-->
     <section v-if="Pay">
       <header>
-        <h1>工资查询</h1><a><img src="../assets/images/dot.png"/></a>
+        <h1>工资查询</h1><a><i class="fa fa-ellipsis-h"></i></a>
       </header>
       <Pay></Pay>
     </section>
@@ -172,6 +172,10 @@ export default {
     background: #fff;
     padding: 10/@base 20/@base;
     border-bottom: 1px dashed #bfbfbf;
+    i{
+      font-size: 22/@base;
+      color: rgb(19,144,211);
+    }
   }
   h1{
     line-height: 30/@base;

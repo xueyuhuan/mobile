@@ -1,7 +1,7 @@
 <template>
   <div class="application">
     <a v-for="app in appList" :href="app.url">
-      <img :src="'/api/resource/app?id=' + app.id"/>
+      <img :src="imgPath +'resource/app?id=' + app.id"/>
       {{app.name}}
     </a>
   </div>
@@ -11,6 +11,7 @@ export default {
   name: "Application",
     data () {
         return {
+          imgPath:process.env.NODE_ENV==='production'?'':'/api',
             appList: []
         }
     },

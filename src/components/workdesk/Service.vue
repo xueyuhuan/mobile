@@ -1,7 +1,7 @@
 <template>
   <div class="service">
     <a v-for="item in service_list" :href="item.url">
-      <img :src="'/api/resource/service?id=' + item.id"/>
+      <img :src="imgPath + 'resource/service?id=' + item.id"/>
       {{item.name}}
     </a>
   </div>
@@ -12,7 +12,8 @@ export default {
   name: "Service",
     data: function () {
         return {
-            service_list: ''
+          imgPath:process.env.NODE_ENV==='production'?'':'/api',
+          service_list: ''
         }
     },
     created:function () {

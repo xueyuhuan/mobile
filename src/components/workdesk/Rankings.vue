@@ -4,7 +4,7 @@
             <li v-for="item in services">
                 <div>
                     <span class="span1" :class="{first_class:item.Z_R_N == 1,second_class:item.Z_R_N == 2,third_class:item.Z_R_N == 3}">{{item.Z_R_N}}</span>
-                    <img :src="'/api/resource/service?id=' + item.ID" ></img>
+                    <img :src="imgPath + 'resource/service?id=' + item.ID" ></img>
                     <span class="span2">{{item.NAME}}</span>
                 </div>
                 <span>{{item.VW}}次</span>
@@ -18,6 +18,7 @@
         name: "Rankings",
         data () {
             return {
+                imgPath:process.env.NODE_ENV==='production'?'':'/api',
                 services: [],
             }
         },

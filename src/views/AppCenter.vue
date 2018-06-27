@@ -4,7 +4,7 @@
             <header>{{li.name}}</header>
             <ul>
                 <li v-for="item in li.apps"><a :href="item.url">
-                    <img :src='"/api/resource/app?id="+item.id'/>
+                    <img :src="imgPath+'/resource/app?id='+item.id"/>
                     {{item.name}}
                 </a></li>
             </ul>
@@ -17,7 +17,8 @@
     name: "AppCenter",
     data(){
       return{
-        list:[]
+          imgPath:process.env.NODE_ENV==='production'?'':'/api',
+          list:[]
       }
     },
     created() {

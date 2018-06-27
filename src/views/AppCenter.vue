@@ -21,14 +21,7 @@
       }
     },
     created() {
-      this.$ajax.post(this.$url.componentAppCenter)
-          .then((res)=>{
-            console.log(res);
-            this.list=res.data.groups;
-          })
-          .catch((error)=>{
-            console.log(error);
-          });
+      this.$ajax.post(this.$url.componentAppCenter).then((res)=>{this.list=res.data.groups;})
     }
   }
 </script>

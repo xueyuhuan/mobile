@@ -1,13 +1,6 @@
 import Vue from "vue";
 import Router from "vue-router";
-
-import WorkDesk from "./views/WorkDesk.vue";
-import ServiceCenter from "./views/ServiceCenter";
-import AppCenter from "./views/AppCenter";
-import ScheduleCenter from "./views/ScheduleCenter"
-import Login from "./views/Login.vue";
 Vue.use(Router);
-
 const router=new Router({
   routes: [
     {
@@ -16,7 +9,7 @@ const router=new Router({
       meta:{
         requireAuth:true,// 添加该字段，表示进入这个路由是需要登录的
       },
-      component: resolve => require(['./views/WorkDesk.vue'], resolve)
+      component: resolve => require(['./views/WorkDesk'], resolve)
     },
     {
       path: "/service",
@@ -85,12 +78,12 @@ const router=new Router({
     {
       path:"/login",
       name:"login",
-      component: Login
+      component: resolve => require(['./views/Login'],resolve)
     },
-    //{
-    //  path: '**',   // 错误路由
-    //  redirect: '/'   //重定向
-    //},
+    {
+     path: '**',   // 错误路由
+     redirect: '/'   //重定向
+    },
   ]
 });
 // 全局路由守卫
@@ -100,7 +93,6 @@ router.beforeEach((to,from,next) => {
   // next: Function: 一定要调用该方法来 resolve 这个钩子。执行效果依赖 next 方法的调用参数。
   if(to.meta.requireAuth){
     if(sessionStorage.token){
-      console.log(to);
       next();
     }
     else {

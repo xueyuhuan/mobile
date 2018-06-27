@@ -10,7 +10,7 @@
               </div>
           </div>
           <ul v-show="isShow">
-              <li v-for="(item,index) in array" @click="toggle(item.url)"><router-link :to="item.url"><span :class="{active:item.url===active}">{{item.name}}</span></router-link></li>
+              <li v-for="(item) in array" @click="toggle(item.url)"><router-link :to="item.url"><span :class="{active:item.url===active}">{{item.name}}</span></router-link></li>
           </ul>
       </nav>
     <router-view/>
@@ -41,7 +41,6 @@ export default {
         }
     },
     mounted(){
-        console.log(this.$route);
         this.active=this.$route.fullPath;
     },
     methods:{

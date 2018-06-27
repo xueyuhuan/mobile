@@ -68,27 +68,9 @@
       this.getList();
     },
     mounted:function(){
-      this.$ajax.post(this.$url.componentServiceCenter_fwly)
-          .then((res)=>{
-            this.field=res.data.serviceTypeList;
-          })
-          .catch((error)=>{
-            console.log(error);
-          });
-      this.$ajax.post(this.$url.componentServiceCenter_fzbm)
-          .then((res)=>{
-            this.department=res.data.depts;
-          })
-          .catch((error)=>{
-            console.log(error);
-          });
-      this.$ajax.post(this.$url.componentServiceCenter_fwdx)
-          .then((res)=>{
-            this.object=res.data.groups;
-          })
-          .catch((error)=>{
-            console.log(error);
-          });
+      this.$ajax.post(this.$url.componentServiceCenter_fwly).then((res)=>{this.field=res.data.serviceTypeList;});
+      this.$ajax.post(this.$url.componentServiceCenter_fzbm).then((res)=>{this.department=res.data.depts;});
+      this.$ajax.post(this.$url.componentServiceCenter_fwdx).then((res)=>{this.object=res.data.groups;});
     },
     methods:{
       initShow(){//初始化下拉菜单为不显示
@@ -156,14 +138,7 @@
         this.getList();
       },
       getList(){//拉取列表
-        this.$ajax.post(this.$url.componentServiceCenter_list,this.searchData)
-            .then((res)=>{
-              console.log(res);
-              this.searchList=res.data.page.rows;
-            })
-            .catch((error)=>{
-              console.log(error);
-            });
+        this.$ajax.post(this.$url.componentServiceCenter_list,this.searchData).then((res)=>{this.searchList=res.data.page.rows;})
       }
     }
   }

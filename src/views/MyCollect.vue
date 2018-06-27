@@ -32,8 +32,7 @@
     },
     created(){
       this.$ajax.post(this.$url.componentCollectService)
-              .then((res)=>{this.service=res.data.services;})
-              .catch((err)=>{console.log(err)});//服务
+              .then((res)=>{this.service=res.data.services;});
       this.$ajax.post(this.$url.componentCollectApp).then((res)=>{this.app=res.data.apps;});//应用
       this.$ajax.post(this.$url.componentCollectNews).then((res)=>{this.info=res.data.result;});//资讯
     },

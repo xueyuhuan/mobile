@@ -28,8 +28,7 @@ export default {
   /***
    * 设置
    */
-  /*头像*/
-  componentSetTouxiang:api+'user_portal/index',//设置头像
+  componentGetUser:api+'user_portal/index',//获取用户
   /*我的收藏*/
   componentCollectService:api+'service_portal/get_user_favorites',//组件-设置-收藏-服务
   componentCollectApp:api+'app_portal/get_user_favorites',//组件-设置-收藏-应用

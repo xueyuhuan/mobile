@@ -22,14 +22,11 @@
     name: "SetUp",
     data(){
       return{
-        user:''
+        user:{}
       }
     },
     created(){
-      this.$ajax.post('/api/user_portal/index')
-          .then((res)=>{
-            this.user=res.data.user;
-          })
+      this.$ajax.post(this.$url.componentGetUser).then((res)=>{this.user=res.data.user;})
     },
     methods:{
       logout(){

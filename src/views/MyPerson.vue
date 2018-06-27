@@ -26,10 +26,7 @@
       }
     },
     created(){
-      this.user=this.$store.state.user;
-    },
-    methods:{
-
+      this.$ajax.post(this.$url.componentGetUser).then((res)=>{this.user=res.data.user;})
     }
   }
 </script>

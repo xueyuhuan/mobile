@@ -1,7 +1,7 @@
 <template>
   <div class="service">
     <a v-for="item in service_list" :href="item.url">
-      <img :src="imgPath + 'resource/service?id=' + item.id"/>
+      <img :src="imgPath + '/resource/service?id=' + item.id"/>
       {{item.name}}
     </a>
   </div>

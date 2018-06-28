@@ -9,7 +9,7 @@
             <li v-for="item in service"><a><img :src="item.img"/>{{item.name}}</a></li>
         </ul>
         <ul v-show="type==='app'" class="service app">
-            <li v-for="item in app"><a :href="item.url"><img :src="imgPath + 'resource/app?id='+item.id"/>{{item.name}}</a></li>
+            <li v-for="item in app"><a :href="item.url"><img :src="imgPath + '/resource/app?id='+item.id"/>{{item.name}}</a></li>
         </ul>
         <ul v-show="type==='info'" class="info">
             <li v-for="item in info"><a :href="item.url">

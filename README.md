@@ -10,4 +10,4 @@ npm install
 ## vuex
 [Vuex](https://vuex.vuejs.org/zh/guide/)
 ## 打包
-num run build-mobile
+npm run build-mobile

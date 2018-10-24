@@ -1,4 +1,4 @@
-# 门户mobile
+# 门户（mobile）
 npm install
 
 ## vue-cli
